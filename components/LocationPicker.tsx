@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, StyleSheet, ActivityIndicator, Button } from 'react-native';
+import { View, Alert, StyleSheet, ActivityIndicator, Button } from 'react-native';
 import * as Location from 'expo-location';
 import Colors from '../constants/Colors';
 import MapPreview from './MapPreview';
@@ -57,29 +57,29 @@ const LocationPicker = () => {
                 {isFetching ? (
                     <ActivityIndicator size="large" color={Colors.mainBlue} />
                 ) : (
-                    <Text>No location chosen yet!</Text>
+                    <Button
+                        title="Get User Location"
+                        color={Colors.secondaryBlue}
+                        onPress={getLocationHandler}
+                    />
                 )}
             </MapPreview>
 
             <GeocodePreview geocode={geocode} />
-
-            <Button
-                title="Get User Location"
-                color={Colors.secondaryBlue}
-                onPress={getLocationHandler}
-            />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     locationPicker: {
-        marginBottom: 15
+        marginBottom: 15,
+        marginTop: 50,
+        marginHorizontal: 15
     },
     mapPreview: {
-        marginBottom: 100,
+        marginBottom: 50,
         width: '100%',
-        height: 150,
+        height: 250,
         borderColor: '#ccc',
         borderWidth: 1
     }

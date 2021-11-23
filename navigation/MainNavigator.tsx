@@ -14,9 +14,6 @@ export default function MainNavigator() {
         <NavigationContainer>
             <Stack.Navigator screenOptions={
                 {
-                    headerStyle: {
-                        backgroundColor: Colors.primary
-                    },
                     headerTintColor: Colors.mainBlue,
                     headerTitleStyle: {
                         fontFamily: 'comforta-bold'

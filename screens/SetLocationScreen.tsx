@@ -1,19 +1,35 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import LocationPicker from '../components/LocationPicker';
-import LocPicker from '../components/LocPicker';
 
-const SetLocationScreen = ({navigation, route}: {navigation:any, route:any}) => {
+const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTintColor: 'black',
+            headerTitleStyle: {
+                fontFamily: 'jost-bold'
+            },
+            headerTitle: 'Confirm your location'
+        });
+    }, [navigation]);
+
     return (
         <View>
-            <Text>SetLocationScreen</Text>
             <LocationPicker />
+
+            <View style={styles.yesNoContainer}>
+                <Button title="Yes" onPress={() => { }} />
+                <Button title="No" onPress={() => { }} />
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-
+    yesNoContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
 
 export default SetLocationScreen;

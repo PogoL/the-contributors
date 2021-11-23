@@ -5,7 +5,6 @@ import ENV from '../envVars';
 
 const MapPreview = (props: any) => {
     let imagePreviewUrl;
-
     if (props.location) {
         imagePreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${props.location.latitude
             },${props.location.longitude
@@ -22,8 +21,6 @@ const MapPreview = (props: any) => {
             )}
         </View>
     );
-
-
 };
 
 const styles = StyleSheet.create({

@@ -17,7 +17,9 @@ export default function useCachedResources() {
                 await Font.loadAsync({
                     ...FontAwesome.font,
                     'comforta': require('../assets/fonts/Comfortaa-Regular.ttf'),
-                    'comforta-bold': require('../assets/fonts/Comfortaa-Bold.ttf')
+                    'comforta-bold': require('../assets/fonts/Comfortaa-Bold.ttf'),
+                    'jost': require('../assets/fonts/Jost-Regular.ttf'),
+                    'jost-bold': require('../assets/fonts/Jost-Bold.ttf')
                 });
             } catch (e) {
                 // We might want to provide this error information to an error reporting service
