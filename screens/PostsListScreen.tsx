@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const PostsListScreen = (props:any) => {
+const PostsListScreen = ({navigation, route}: {navigation:any, route:any}) => {
     return (
         <View>
             <Text>PostsListScreen</Text>
@@ -9,6 +9,8 @@ const PostsListScreen = (props:any) => {
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+});
 
 export default PostsListScreen;
