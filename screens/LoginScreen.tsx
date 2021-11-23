@@ -6,16 +6,18 @@ const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => 
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
-          headerShown:false
+            headerShown: false
         });
-      }, [navigation]);
+    }, [navigation]);
 
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../assets/images/login-screen.png')} resizeMode="cover" style={styles.imageContainer} imageStyle={styles.image}>
                 <View style={styles.imageContainer}>
                     <Text style={styles.mainText}>appropose</Text>
-                    <TouchableOpacity onPress={() => { navigation.navigate('PostsList') }}>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('PostsList') //todo change it to .replace()
+                    }}>
                         <Text style={styles.loginButton}>Login</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => { navigation.navigate('PostsList') }}>
@@ -37,12 +39,12 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         justifyContent: "center",
-        alignItems:'center',
-        alignContent:'center'
+        alignItems: 'center',
+        alignContent: 'center'
     },
     mainText: {
         fontSize: 50,
-        fontFamily:'comforta-bold',
+        fontFamily: 'comforta-bold',
         color: Colors.mainBlue,
         margin: 30
     },
@@ -50,13 +52,13 @@ const styles = StyleSheet.create({
         fontSize: 34,
         fontFamily: 'comforta',
         color: Colors.secondaryBlue,
-        margin:20
+        margin: 20
     },
     registerButton: {
         fontSize: 25,
         fontFamily: 'comforta',
         color: Colors.secondaryBlue,
-        marginTop:20
+        marginTop: 20
     }
 });
 

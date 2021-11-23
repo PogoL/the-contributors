@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PostsListScreen from '../screens/PostsListScreen';
 import Colors from '../constants/Colors';
 import LoginScreen from '../screens/LoginScreen';
+import AddNewPostScreen from '../screens/AddNewPostScreen';
+import SetLocationScreen from '../screens/SetLocationScreen';
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -26,6 +28,8 @@ export default function MainNavigator() {
                     component={LoginScreen}
                 />
                 <Stack.Screen name="PostsList" component={PostsListScreen} />
+                <Stack.Screen name="AddNewPost" component={AddNewPostScreen} />
+                <Stack.Screen name="SetLocation" component={SetLocationScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
