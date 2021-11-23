@@ -4,21 +4,16 @@ import ImgPicker from '../components/ImgPicker';
 import PrimaryButton from '../components/PrimaryButton';
 import Colors from '../constants/Colors';
 
-const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     const [titleValue, setTitleValue] = useState('');
     const [descriptionValue, setDescriptionValue] = useState('');
-    const [questionValue, setQuestionValue] = useState('');
     const [selectedImage, setSelectedImage] = useState();
 
-    //destructure
-    const { postLocation } = route.params;
+    //destructure - TODO
+    //const { postId } = route.params;
 
     const titleChangeHandler = (text: any) => {
         setTitleValue(text);
-    };
-
-    const questionChangeHandler = (text: any) => {
-        setQuestionValue(text);
     };
 
     const descriptionChangeHandler = (text: any) => {
@@ -29,12 +24,10 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
         setSelectedImage(imagePath);
     };
 
-    const savePostHandler = () => {
+    const saveSolutionHandler = () => {
         console.log(titleValue);
-        console.log(questionValue);
         console.log(descriptionValue);
         console.log(selectedImage);
-        console.log(postLocation);
 
         navigation.goBack();
     };
@@ -44,26 +37,20 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
             <TextInput
                 style={styles.titleInput}
                 onChangeText={titleChangeHandler}
-                placeholder="What's fuzz about?"
+                placeholder="What do you propose?"
                 value={titleValue}
-            />
-            <TextInput
-                style={styles.questionInput}
-                onChangeText={questionChangeHandler}
-                placeholder="Formulate the problem as a question..."
-                value={questionValue}
             />
             <TextInput
                 multiline
                 numberOfLines={9}
                 style={styles.descriptionInput}
                 onChangeText={descriptionChangeHandler}
-                placeholder="Tell us more about it..."
+                placeholder="Tell us more about your idea..."
                 value={descriptionValue}
             />
             <ImgPicker onImageTaken={imageTakenHandler} />
             <View style={styles.buttonContainer}>
-                <PrimaryButton onPress={savePostHandler} text="submit" />
+                <PrimaryButton onPress={saveSolutionHandler} text="submit" />
             </View>
         </View>
     );
@@ -85,14 +72,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     },
-    questionInput: {
-        borderColor: Colors.grey,
-        borderBottomWidth: 1,
-        color: Colors.darkGrey,
-        marginBottom: 15,
-        paddingVertical: 5,
-        paddingHorizontal: 5
-    },
     descriptionInput: {
         borderColor: Colors.grey,
         borderWidth: 1,
@@ -107,4 +86,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AddNewPostScreen;
+export default AddNewSolutionScreen;

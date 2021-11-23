@@ -27,7 +27,7 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
             headerRight: () => (
                 <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
                     <Item title="search" iconName="add-circle-outline" onPress={() => navigation.navigate('SetLocation')} />
-                    <Item title="search" iconName="notifications-outline" onPress={() => navigation.navigate('AddNewPost')} />
+                    <Item title="search" iconName="notifications-outline" onPress={() => navigation.navigate('AddNewSolution')} />
                 </HeaderButtons>
             )
         });

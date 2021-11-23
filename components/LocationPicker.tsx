@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, StyleSheet, ActivityIndicator, Button } from 'react-native';
+import { View, Alert, StyleSheet, ActivityIndicator, Button } from 'react-native';
 import * as Location from 'expo-location';
 import Colors from '../constants/Colors';
 import MapPreview from './MapPreview';
 import GeocodePreview from './GeocodePreview';
+import SecondaryButton from './SecondaryButton';
 
-const LocationPicker = () => {
+const LocationPicker = (props: any) => {
     const [isFetching, setIsFetching] = useState(false);
     const [pickedLocation, setPickedLocation] = useState();
     const [geocode, setGeocode] = useState();
@@ -39,8 +40,9 @@ const LocationPicker = () => {
             setPickedLocation(currentLocation);
 
             const geocode = await Location.reverseGeocodeAsync(currentLocation);
-
             setGeocode(geocode[0]);
+
+            props.onLocationReturned(currentLocation);
         } catch (err) {
             Alert.alert(
                 'Could not fetch location!',
@@ -57,30 +59,29 @@ const LocationPicker = () => {
                 {isFetching ? (
                     <ActivityIndicator size="large" color={Colors.mainBlue} />
                 ) : (
-                    <Text>No location chosen yet!</Text>
+                    <SecondaryButton
+                        text="Get Location"
+                        onPress={getLocationHandler}
+                    />
                 )}
             </MapPreview>
 
             <GeocodePreview geocode={geocode} />
-
-            <Button
-                title="Get User Location"
-                color={Colors.secondaryBlue}
-                onPress={getLocationHandler}
-            />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     locationPicker: {
-        marginBottom: 15
+        marginBottom: 15,
+        marginTop: 50,
+        marginHorizontal: 15
     },
     mapPreview: {
-        marginBottom: 100,
+        marginBottom: 50,
         width: '100%',
-        height: 150,
-        borderColor: '#ccc',
+        height: 250,
+        borderColor: Colors.grey,
         borderWidth: 1
     }
 });

@@ -11,10 +11,12 @@ const GeocodePreview = (props: any) => {
     }
 
     return (
-        <View style={{ ...styles.mapPreview, ...props.style }}>
+        <View style={{...props.style }}>
             {geocode ? (
-                <View>
-                    <Text>We have located you in {geocode.city}, {geocode.street} {geocode.name}</Text>
+                <View style={styles.textContainer}>
+                    <Text style={styles.normalText}>We have located you in:</Text>
+                    <Text style={styles.boldText}>{geocode.city}, {geocode.street}.</Text>
+                    <Text style={styles.normalText}>Is that correct?</Text>
                 </View>
             ) : (
                 props.children
@@ -26,13 +28,18 @@ const GeocodePreview = (props: any) => {
 };
 
 const styles = StyleSheet.create({
-    mapPreview: {
+    textContainer: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom:20
     },
-    mapImage: {
-        width: '100%',
-        height: '100%'
+    normalText: {
+        fontSize: 15,
+        textAlign: 'center'
+    },
+    boldText: {
+        fontSize: 20,
+        fontWeight: 'bold'
     }
 });
 
