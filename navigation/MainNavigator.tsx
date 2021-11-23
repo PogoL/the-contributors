@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 import LoginScreen from '../screens/LoginScreen';
 import AddNewPostScreen from '../screens/AddNewPostScreen';
 import SetLocationScreen from '../screens/SetLocationScreen';
+import AddNewSolutionScreen from '../screens/AddNewSolutionScreen';
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -26,6 +27,7 @@ export default function MainNavigator() {
                 />
                 <Stack.Screen name="PostsList" component={PostsListScreen} />
                 <Stack.Screen name="AddNewPost" component={AddNewPostScreen} />
+                <Stack.Screen name="AddNewSolution" component={AddNewSolutionScreen} />
                 <Stack.Screen name="SetLocation" component={SetLocationScreen} />
             </Stack.Navigator>
         </NavigationContainer>
