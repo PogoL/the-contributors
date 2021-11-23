@@ -4,8 +4,9 @@ import * as Location from 'expo-location';
 import Colors from '../constants/Colors';
 import MapPreview from './MapPreview';
 import GeocodePreview from './GeocodePreview';
+import SecondaryButton from './SecondaryButton';
 
-const LocationPicker = () => {
+const LocationPicker = (props: any) => {
     const [isFetching, setIsFetching] = useState(false);
     const [pickedLocation, setPickedLocation] = useState();
     const [geocode, setGeocode] = useState();
@@ -39,8 +40,9 @@ const LocationPicker = () => {
             setPickedLocation(currentLocation);
 
             const geocode = await Location.reverseGeocodeAsync(currentLocation);
-
             setGeocode(geocode[0]);
+
+            props.onLocationReturned(currentLocation);
         } catch (err) {
             Alert.alert(
                 'Could not fetch location!',
@@ -57,9 +59,8 @@ const LocationPicker = () => {
                 {isFetching ? (
                     <ActivityIndicator size="large" color={Colors.mainBlue} />
                 ) : (
-                    <Button
-                        title="Get User Location"
-                        color={Colors.secondaryBlue}
+                    <SecondaryButton
+                        text="Get Location"
                         onPress={getLocationHandler}
                     />
                 )}
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         width: '100%',
         height: 250,
-        borderColor: '#ccc',
+        borderColor: Colors.grey,
         borderWidth: 1
     }
 });
