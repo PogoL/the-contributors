@@ -114,7 +114,7 @@ const Post = (props) => {
                         style={styles.rowTouchableOpacity}
                         onPress={() => {
                             navigation.navigate('PostDetails', {
-                                PostProperties: {
+                                props: {
                                     ...props,
                                     distance,
                                 },

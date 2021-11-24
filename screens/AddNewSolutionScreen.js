@@ -17,9 +17,6 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
     const [descriptionValue, setDescriptionValue] = useState('');
     const [selectedImage, setSelectedImage] = useState();
 
-    //destructure - TODO
-    //const { postId } = route.params;
-
     const titleChangeHandler = (text: any) => {
         setTitleValue(text);
     };
@@ -33,10 +30,6 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
     };
 
     const saveSolutionHandler = () => {
-        console.log(titleValue);
-        console.log(descriptionValue);
-        console.log(selectedImage);
-
         navigation.goBack();
     };
 

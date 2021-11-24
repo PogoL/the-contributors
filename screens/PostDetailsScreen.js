@@ -2,9 +2,8 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
 
 const PostDetailsScreen = ({ navigation, route }) => {
-    const { PostProperties } = route.params;
-    console.log('PostProperties');
-    console.log(PostProperties);
+    const { props } = route.params;
+
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
@@ -17,27 +16,33 @@ const PostDetailsScreen = ({ navigation, route }) => {
                 <ImageBackground
                     style={styles.image}
                     source={{
-                        uri: PostProperties.imageUrl,
+                        uri: props.imageUrl,
                     }}>
                     <View style={styles.background} />
                 </ImageBackground>
                 <View style={styles.distanceView}>
-                    <Text style={styles.distanceText}>{PostProperties.distance}</Text>
+                    <Text style={styles.distanceText}>{props.distance}</Text>
                 </View>
                 <View>
-                    <Text style={styles.titleText}>{PostProperties.title}</Text>
+                    <Text style={styles.titleText}>{props.title}</Text>
                 </View>
                 <View>
-                    <Text style={styles.descriptionText}>{PostProperties.question}</Text>
+                    <Text style={styles.descriptionText}>{props.question}</Text>
                 </View>
             </View>
             <View style={styles.descriptionView}>
                 <ScrollView>
-                    <Text style={styles.descriptionText}>{PostProperties.description}</Text>
+                    <Text style={styles.descriptionText}>{props.description}</Text>
                 </ScrollView>
             </View>
             <View style={styles.buttonsView}>
-                <Pressable style={styles.checkSolutionsButton} onPress={() => navigation.navigate('SolutionList')}>
+                <Pressable
+                    style={styles.checkSolutionsButton}
+                    onPress={() =>
+                        navigation.navigate('SolutionList', {
+                            postId: props.id,
+                        })
+                    }>
                     <Text style={styles.checkSolutionText}>check solutions</Text>
                 </Pressable>
                 <Pressable style={styles.addSolutionButton} onPress={() => navigation.navigate('AddNewSolution')}>

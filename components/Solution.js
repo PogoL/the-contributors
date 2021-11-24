@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ProgressBarAndroidComponent } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import moment from 'moment';
+
 const styles = StyleSheet.create({
     tinyLogo: {
         width: '100%',
@@ -86,6 +89,8 @@ const styles = StyleSheet.create({
     },
 });
 const Solution = (props) => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.MainRowBackground}>
             <View style={styles.rowBackground}>
@@ -93,21 +98,21 @@ const Solution = (props) => {
                     <TouchableOpacity
                         style={styles.rowTouchableOpacity}
                         onPress={() => {
-                            props.navigation.navigate('SolutionDetails', { Properties: props, MainNavigator: props.navigation });
+                            navigation.navigate('SolutionDetails', { props });
                         }}>
                         <View style={styles.test5}>
                             <Image
                                 style={styles.tinyLogo}
                                 source={{
-                                    uri: props.photo,
+                                    uri: props.imageUrl,
                                 }}
                             />
                             <View style={styles.rowView3}>
-                                <Text style={styles.testTxt2}>{props.time}</Text>
+                                <Text style={styles.testTxt2}>{moment(props.createdOn).fromNow()}</Text>
                             </View>
                         </View>
                         <View style={styles.rowView}>
-                            <Text style={styles.Header}>{props.header}</Text>
+                            <Text style={styles.Header}>{props.title}</Text>
                             <Text style={styles.Description}>{props.description}</Text>
                         </View>
                     </TouchableOpacity>
