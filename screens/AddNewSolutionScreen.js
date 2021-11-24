@@ -6,6 +6,7 @@ import SecondaryButton from '../components/SecondaryButton';
 import Colors from '../constants/Colors';
 import Input from '../components/Input';
 import { addSolution } from '../api/solutions';
+import SuccessModal from '../components/SuccessModal';
 
 const AddNewSolutionScreen = ({ navigation, route }) => {
     const { postId } = route.params;
@@ -18,6 +19,7 @@ const AddNewSolutionScreen = ({ navigation, route }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState();
+    const [modalVisible, setModalVisible] = useState(false);
 
     const saveSolutionHandler = async () => {
         await addSolution({
@@ -59,7 +61,7 @@ const AddNewSolutionScreen = ({ navigation, route }) => {
                 modalVisible={modalVisible}
                 onSetVisible={() => {
                     setModalVisible(!modalVisible);
-                    navigation.goBack();
+                    setTimeout(navigation.goBack(), 3000);
                 }}
             />
         </View>
