@@ -29,9 +29,9 @@ const PostDetailsScreen = ({navigation, route}: {navigation:any, route:any}) => 
                                 <Text style={styles.Description}>How might we inform about sale without putting so many red signs?</Text>
                             </View>
         </View>
-        <View style={{ height: '30%',  }}>
+        <View style={{ height: '40%',  }}>
   <ScrollView>
-    <Text style={{fontSize:17, padding:10}}>
+    <Text style={{fontSize:15, padding:25, lineHeight:20}}>
     I walk into a shop and can't focus on what I want to find because most things are covered up with big red sale signs. I caught it the first time, seriously ;)
     I walk into a shop and can't focus on what I want to find because most things are covered up with big red sale signs. I caught it the first time, seriously ;)
     I walk into a shop and can't focus on what I want to find because most things are covered up with big red sale signs. I caught it the first time, seriously ;)
@@ -47,12 +47,12 @@ const PostDetailsScreen = ({navigation, route}: {navigation:any, route:any}) => 
         <Pressable
           style={styles.checkButton}
           onPress={() => MainNavigator.navigate('SolutionList')}
-        ><Text style= {{fontSize:15, marginTop:'7.5%', color:'white'}} >Check solutions</Text></Pressable>
+        ><Text style= {{fontSize:15, marginTop:'7.5%', color:'white'}} >check solutions</Text></Pressable>
         <Pressable
           style={styles.addButton}
 
           onPress={() => MainNavigator.navigate('AddNewSolution')}
-        ><Text style= {{fontSize:15,marginTop:'7.5%', color:'#2F4152'}} >Add solution</Text></Pressable>
+        ><Text style= {{fontSize:15,marginTop:'7.5%', color:'#2F4152'}} >add solution</Text></Pressable>
       </View>
         </View>
         
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     photoView:{
-        height:'60%',
+        height:'50%',
     },
     tinyLogo: {
       width: '100%',
@@ -90,22 +90,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginTop:'2.5%'
+        
       },
       checkButton:{
-        backgroundColor: '#2F4152',
+        backgroundColor: '#000000',
         width:'40%',
         height: '7.5%',
-        borderRadius:15,
         alignItems: 'center',
         alignContent:'center',
       },
       addButton:{
         width:'40%',
         height: '7.5%',
-        borderRadius:15,
         alignItems: 'center',
         alignContent:'center',
-        borderColor: '#2F4152',
+        borderColor: '#000000',
         borderWidth:1,
       },
     rowView2: {
@@ -121,17 +120,17 @@ const styles = StyleSheet.create({
         marginTop:'30%'
     },
     Header: {
-        fontSize:30,
+        fontSize:28,
         fontWeight:'bold',
         textAlign:'left',
         color:'#ffffff',
         // lineHeight: 20.23,
         marginLeft:10,
-        marginTop:'15%'
+        marginTop:'5%'
 
     },
     Description:{
-        fontSize:17,
+        fontSize:15,
         marginLeft:10,
         marginTop:'0%',
         marginBottom:'10%',

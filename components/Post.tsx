@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     },
     rowBackground: {
         backgroundColor: '#2F4152',
-        borderRadius: 25,
+        // borderRadius: 25,
+        marginTop:2.5,
     },
     test5: {
         height: '100%',
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         padding:5
     }
 });
-const PostScreen = (props) => {
+const Post = (props) => {
     return (
         <View style={styles.MainRowBackground}>
             <View style={styles.rowBackground}>
@@ -124,4 +125,4 @@ const PostScreen = (props) => {
     );
 };
 
-export default PostScreen;
+export default Post;

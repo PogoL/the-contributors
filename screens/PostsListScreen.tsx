@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { CustomHeaderButton } from '../components/CustomHeaderButton';
+import Post from '../components/Post';
 import PostScreen from '../components/Post';
 
 const styles = StyleSheet.create({
@@ -40,7 +41,7 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
         <View style={styles.container} >
       <FlatList
         data={mockDataPosts}
-        renderItem={({item}) => <PostScreen navigation={navigation} photo={item.Photo} name={item.Title} header={item.Header} description={item.Description} time={item.Time} howFar={item.HowFar}></PostScreen>}
+        renderItem={({item}) => <Post navigation={navigation} photo={item.Photo} name={item.Title} header={item.Header} description={item.Description} time={item.Time} howFar={item.HowFar}></Post>}
       />
     </View>
     );
