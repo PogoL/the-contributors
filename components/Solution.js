@@ -32,8 +32,6 @@ const styles = StyleSheet.create({
     rowView2: {
         width: '70%',
         justifyContent: 'center',
-        borderTopRightRadius: 25,
-        borderBottomRightRadius: 25,
         paddingLeft: 0,
         backgroundColor: '#FFD233',
         marginTop: '45%',
@@ -44,8 +42,6 @@ const styles = StyleSheet.create({
     rowView3: {
         width: '70%',
         justifyContent: 'center',
-        borderTopRightRadius: 25,
-        borderBottomRightRadius: 25,
         paddingLeft: 0,
         backgroundColor: '#FFD233',
         marginTop: '75%',

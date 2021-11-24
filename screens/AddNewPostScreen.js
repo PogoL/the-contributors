@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Alert, TextInput } from 'react-native';
+import { View, StyleSheet, Alert, TextInput, ScrollView } from 'react-native';
 import ImgPicker from '../components/ImgPicker';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
