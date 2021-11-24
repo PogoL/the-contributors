@@ -64,7 +64,7 @@ const PostDetailsScreen = ({ navigation, route }) => {
                 <SecondaryButton
                     text="add solution"
                     style={styles.addSolutionButton}
-                    onPress={() => navigation.navigate('AddNewSolution')}
+                    onPress={() => navigation.navigate('AddNewSolution', { postId: props.postId })}
                 />
             </View>
         </View>

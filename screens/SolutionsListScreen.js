@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
 const SolutionsListScreen = ({ navigation, route }) => {
     const [solutions, setSolutions] = useState([]);
 
+    const { postId } = route.params;
     useEffect(async () => {
-        const { postId } = route.params;
         var solutions = await fetchPostSolutions(postId);
         setSolutions(solutions);
     }, []);
@@ -43,8 +43,11 @@ const SolutionsListScreen = ({ navigation, route }) => {
             headerTitle: '',
             headerRight: () => (
                 <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-                    <Item title="search" iconName="add-circle-outline" onPress={() => navigation.navigate('SetLocation')} />
-                    <Item title="search" iconName="notifications-outline" onPress={() => navigation.navigate('AddNewSolution')} />
+                    <Item
+                        title="search"
+                        iconName="add-circle-outline"
+                        onPress={() => navigation.navigate('AddNewSolution', { postId: postId })}
+                    />
                 </HeaderButtons>
             ),
         });

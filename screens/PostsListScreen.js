@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Alert } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { CustomHeaderButton } from '../components/CustomHeaderButton';
 import Post from '../components/Post';
@@ -32,7 +32,7 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
                     <Item
                         title="search"
                         iconName="notifications-outline"
-                        onPress={() => navigation.navigate('AddNewSolution', { postId: item.postId })}
+                        onPress={() => Alert.alert('Tu powinny być notyfikacje', 'Ale ich nie ma')}
                     />
                 </HeaderButtons>
             ),
