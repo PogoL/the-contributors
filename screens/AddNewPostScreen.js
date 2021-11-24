@@ -84,7 +84,6 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
     );
 
     const submitHandler = useCallback(() => {
-        console.log(formState);
         if (!formState.formIsValid) {
             Alert.alert('Wrong input!', 'Fill all required fields.', [{ text: 'Okay' }]);
             return;

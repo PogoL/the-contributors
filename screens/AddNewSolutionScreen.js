@@ -30,10 +30,6 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
     };
 
     const saveSolutionHandler = () => {
-        console.log(titleValue);
-        console.log(descriptionValue);
-        console.log(selectedImage);
-
         navigation.goBack();
     };
 

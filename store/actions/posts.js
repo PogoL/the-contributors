@@ -30,7 +30,7 @@ export const addPost = (
             },
             body: formData,
         });
-        console.log(response);
+
         dispatch({
             type: ADD_POST,
             postData: {
