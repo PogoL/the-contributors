@@ -3,10 +3,10 @@ import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground }
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 import Colors from '../constants/Colors';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const PostDetailsScreen = ({ navigation, route }) => {
     const { props } = route.params;
-
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
@@ -38,7 +38,7 @@ const PostDetailsScreen = ({ navigation, route }) => {
                         text="+1"
                         style={styles.addRating}
                         textStyle={styles.textStyle}
-                        onPress={() => console.log('+1')}
+                        onPress={() => console.log('+1 byczku')}
                     />
                 </View>
             </View>
