@@ -11,6 +11,7 @@ import AddNewSolutionScreen from '../screens/AddNewSolutionScreen';
 import PostDetailsScreen from '../screens/PostDetailsScreen';
 import SolutionsListScreen from '../screens/SolutionsListScreen';
 import SolutionDetailsScreen from '../screens/SolutionDetailsScreen';
+
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {

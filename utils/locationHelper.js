@@ -1,4 +1,5 @@
 import * as Location from 'expo-location';
+import haversine from 'haversine-distance';
 
 const verifyPermissions = async () => {
     const result = await Location.requestForegroundPermissionsAsync();
@@ -21,4 +22,9 @@ export const getCurrentCordinates = async () => {
     };
 
     return currentCordinates;
+};
+
+export const getDistanceText = (firstPlaceCordinates, secondPlaceCordinates) => {
+    var distance = haversine(firstPlaceCordinates, secondPlaceCordinates);
+    return `${distance.toFixed(1)} km away from you`;
 };

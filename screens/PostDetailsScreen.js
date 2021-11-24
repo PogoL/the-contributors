@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
 
 const PostDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
-    const { MainNavigator } = route.params;
+    const { PostProperties } = route.params;
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
@@ -13,45 +13,33 @@ const PostDetailsScreen = ({ navigation, route }: { navigation: any, route: any 
         <View style={styles.container}>
             <View style={styles.photoView}>
                 <ImageBackground
-                    style={styles.tinyLogo}
+                    style={styles.image}
                     source={{
-                        uri: 'https://retail360.pl/wp-content/uploads/2017/05/The-Body-Shop.jpg',
+                        uri: PostProperties.imageUrl,
                     }}>
-                    <View style={styles.child} />
+                    <View style={styles.background} />
                 </ImageBackground>
-                <View style={styles.rowView2}>
-                    <Text style={styles.testTxt1}>100 m away from you</Text>
+                <View style={styles.distanceView}>
+                    <Text style={styles.distanceText}>{PostProperties.distance}</Text>
                 </View>
                 <View>
-                    <Text style={styles.Header}>Sale madness!</Text>
+                    <Text style={styles.titleText}>{PostProperties.title}</Text>
                 </View>
                 <View>
-                    <Text style={styles.Description}>How might we inform about sale without putting so many red signs?</Text>
+                    <Text style={styles.descriptionText}>{PostProperties.question}</Text>
                 </View>
             </View>
-            <View style={{ height: '40%' }}>
+            <View style={styles.descriptionView}>
                 <ScrollView>
-                    <Text style={{ fontSize: 15, padding: 25, lineHeight: 20 }}>
-                        I walk into a shop and can't focus on what I want to find because most things are covered up with big red
-                        sale signs. I caught it the first time, seriously ;) I walk into a shop and can't focus on what I want to
-                        find because most things are covered up with big red sale signs. I caught it the first time, seriously ;)
-                        I walk into a shop and can't focus on what I want to find because most things are covered up with big red
-                        sale signs. I caught it the first time, seriously ;) I walk into a shop and can't focus on what I want to
-                        find because most things are covered up with big red sale signs. I caught it the first time, seriously ;)
-                        I walk into a shop and can't focus on what I want to find because most things are covered up with big red
-                        sale signs. I caught it the first time, seriously ;) I walk into a shop and can't focus on what I want to
-                        find because most things are covered up with big red sale signs. I caught it the first time, seriously ;)
-                        I walk into a shop and can't focus on what I want to find because most things are covered up with big red
-                        sale signs. I caught it the first time, seriously ;)
-                    </Text>
+                    <Text style={styles.descriptionText}>{PostProperties.description}</Text>
                 </ScrollView>
             </View>
-            <View style={styles.fixToText}>
-                <Pressable style={styles.checkButton} onPress={() => MainNavigator.navigate('SolutionList')}>
-                    <Text style={{ fontSize: 15, marginTop: '7.5%', color: 'white' }}>check solutions</Text>
+            <View style={styles.buttonsView}>
+                <Pressable style={styles.checkSolutionsButton} onPress={() => NavigatorObject.navigate('SolutionList')}>
+                    <Text style={styles.checkSolutionText}>check solutions</Text>
                 </Pressable>
-                <Pressable style={styles.addButton} onPress={() => MainNavigator.navigate('AddNewSolution')}>
-                    <Text style={{ fontSize: 15, marginTop: '7.5%', color: '#000000' }}>add solution</Text>
+                <Pressable style={styles.addSolutionButton} onPress={() => NavigatorObject.navigate('AddNewSolution')}>
+                    <Text style={styles.addSolutionText}>add solution</Text>
                 </Pressable>
             </View>
         </View>
@@ -65,14 +53,18 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
     },
+    descriptionView: {
+        height: '40%',
+    },
+    descriptionText: { fontSize: 15, padding: 25, lineHeight: 20 },
     photoView: {
         height: '50%',
     },
-    child: {
+    background: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.5)',
     },
-    tinyLogo: {
+    image: {
         width: '100%',
         height: '100%',
         position: 'absolute',
@@ -82,26 +74,26 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
-    testTxt1: {
+    distanceText: {
         color: '#000000',
         alignContent: 'center',
         fontSize: 13,
         fontFamily: 'jost',
     },
-    fixToText: {
+    buttonsView: {
         height: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginTop: '2.5%',
     },
-    checkButton: {
+    checkSolutionsButton: {
         backgroundColor: '#000000',
         width: '40%',
         height: '7.5%',
         alignItems: 'center',
         alignContent: 'center',
     },
-    addButton: {
+    addSolutionButton: {
         width: '40%',
         height: '7.5%',
         alignItems: 'center',
@@ -109,7 +101,9 @@ const styles = StyleSheet.create({
         borderColor: '#000000',
         borderWidth: 1,
     },
-    rowView2: {
+    checkSolutionText: { fontSize: 15, marginTop: '7.5%', color: 'white' },
+    addSolutionText: { fontSize: 15, marginTop: '7.5%', color: '#000000' },
+    distanceView: {
         width: '40%',
         justifyContent: 'center',
         borderTopRightRadius: 25,
@@ -121,16 +115,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: '30%',
     },
-    Header: {
+    titleText: {
         fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'left',
         color: '#ffffff',
-        // lineHeight: 20.23,
         marginLeft: 10,
         marginTop: '5%',
     },
-    Description: {
+    descriptionText: {
         fontSize: 15,
         marginLeft: 10,
         marginTop: '0%',
