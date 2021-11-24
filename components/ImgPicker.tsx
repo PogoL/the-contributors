@@ -18,7 +18,8 @@ const ImgPicker = (props: any) => {
     const imagePickerOptions: ImagePicker.ImagePickerOptions = {
         allowsEditing: true,
         aspect: [4, 3],
-        quality: 0.5
+        quality: 0.5,
+        // base64: true
     };
 
     const takeImageHandler = async () => {
@@ -28,8 +29,8 @@ const ImgPicker = (props: any) => {
         }
         const image = await ImagePicker.launchCameraAsync(imagePickerOptions);
 
-        setPickedImage(image.uri);
-        props.onImageTaken(image.uri);
+        setPickedImage(image);
+        props.onImageTaken(image);
     };
 
     const chooseImageHandler = async () => {
@@ -38,12 +39,9 @@ const ImgPicker = (props: any) => {
             return;
         }
         const image = await ImagePicker.launchImageLibraryAsync(imagePickerOptions);
-
-        setPickedImage(image.uri);
-        props.onImageTaken(image.uri);
+        setPickedImage(image);
+        props.onImageTaken(image);
     };
-
-
 
     return (
         <View style={styles.imagePicker}>
@@ -51,7 +49,7 @@ const ImgPicker = (props: any) => {
                 {!pickedImage ? (
                     <Text style={styles.noImageText}>No image picked yet.</Text>
                 ) : (
-                    <Image source={{ uri: pickedImage }} style={styles.image} />
+                    <Image source={{ uri: pickedImage.uri }} style={styles.image} />
                 )}
             </View>
             <View style={styles.buttonContainer}>

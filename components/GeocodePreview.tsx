@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import Colors from '../constants/Colors';
 
 import { GeocodeResult } from '../models/GeocodeResult';
 
@@ -11,7 +12,7 @@ const GeocodePreview = (props: any) => {
     }
 
     return (
-        <View style={{...props.style }}>
+        <View style={{ ...props.style }}>
             {geocode ? (
                 <View style={styles.textContainer}>
                     <Text style={styles.normalText}>We have located you in:</Text>
@@ -23,23 +24,23 @@ const GeocodePreview = (props: any) => {
             )}
         </View>
     );
-
-
 };
 
 const styles = StyleSheet.create({
     textContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom:20
+        marginBottom: 20,
     },
     normalText: {
         fontSize: 15,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: Colors.mainBlue
     },
     boldText: {
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: Colors.mainBlue
     }
 });
 
