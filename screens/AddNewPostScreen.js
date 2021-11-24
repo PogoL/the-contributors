@@ -45,7 +45,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
     const dispatch = useDispatch();
 
     //destructure
-    const { postLocation } = route.params;
+    const { postLocation, postRetailer } = route.params;
 
     const [formState, dispatchFormState] = useReducer(formReducer, {
         inputValues: {
@@ -86,7 +86,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
     const submitHandler = useCallback(() => {
         console.log(formState);
         if (!formState.formIsValid) {
-            Alert.alert('Wrong input!', 'Please check the errors in the form.', [{ text: 'Okay' }]);
+            Alert.alert('Wrong input!', 'Fill all required fields.', [{ text: 'Okay' }]);
             return;
         }
 
@@ -98,7 +98,8 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
                 +formState.inputValues.latitude,
                 +formState.inputValues.longitude,
                 'u1',
-                selectedImage
+                selectedImage,
+                postRetailer
             )
         );
 
@@ -118,11 +119,11 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
                 initiallyValid={false}
                 required
                 style={styles.titleInput}
+                maxLength={30}
             />
             <Input
                 id="question"
                 placeholder="Formulate the problem as a question..."
-                errorText="Please enter a valid question!"
                 autoCorrect
                 returnKeyType="next"
                 onInputChange={inputChangeHandler}
@@ -130,11 +131,11 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
                 initiallyValid={false}
                 required
                 style={styles.questionInput}
+                maxLength={100}
             />
             <Input
                 id="description"
                 placeholder="Tell us more about it..."
-                errorText="Please enter a valid description!"
                 autoCorrect
                 onInputChange={inputChangeHandler}
                 initialValue={''}
@@ -143,6 +144,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
                 multiline
                 numberOfLines={9}
                 style={styles.descriptionInput}
+                maxLength={300}
             />
             <ImgPicker onImageTaken={imageTakenHandler} />
             <View style={styles.buttonContainer}>
@@ -161,7 +163,8 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 30,
+        marginVertical: 20,
+        marginHorizontal: 30,
     },
     titleInput: {
         borderColor: Colors.mainBlue,
