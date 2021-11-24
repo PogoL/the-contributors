@@ -10,23 +10,23 @@ const inputReducer = (state, action) => {
             return {
                 ...state,
                 value: action.value,
-                isValid: action.isValid
+                isValid: action.isValid,
             };
         case INPUT_BLUR:
             return {
                 ...state,
-                touched: true
+                touched: true,
             };
         default:
             return state;
     }
 };
 
-const Input = (props:any) => {
+const Input = (props: any) => {
     const [inputState, dispatch] = useReducer(inputReducer, {
         value: props.initialValue ? props.initialValue : '',
         isValid: props.initiallyValid,
-        touched: false
+        touched: false,
     });
 
     const { onInputChange, id } = props;
@@ -37,8 +37,9 @@ const Input = (props:any) => {
         }
     }, [inputState, onInputChange, id]);
 
-    const textChangeHandler = (text:any) => {
-        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const textChangeHandler = (text: any) => {
+        const emailRegex =
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let isValid = true;
         if (props.required && text.trim().length === 0) {
             isValid = false;
@@ -64,12 +65,7 @@ const Input = (props:any) => {
 
     return (
         <View style={styles.formControl}>
-            <TextInput
-                {...props}
-                value={inputState.value}
-                onChangeText={textChangeHandler}
-                onBlur={lostFocusHandler}
-            />
+            <TextInput {...props} value={inputState.value} onChangeText={textChangeHandler} onBlur={lostFocusHandler} />
             {!inputState.isValid && inputState.touched && (
                 <View style={styles.errorContainer}>
                     <Text style={styles.errorText}>{props.errorText}</Text>
@@ -81,26 +77,14 @@ const Input = (props:any) => {
 
 const styles = StyleSheet.create({
     formControl: {
-        width: '100%'
+        width: '100%',
     },
-    label: {
-        fontFamily: 'jost',
-        marginVertical: 8
-    },
-    input: {
-        paddingHorizontal: 2,
-        paddingVertical: 5,
-        borderBottomColor: '#ccc',
-        borderBottomWidth: 1
-    },
-    errorContainer: {
-        marginVertical: 5
-    },
+    errorContainer: {},
     errorText: {
         fontFamily: 'jost',
         color: 'red',
-        fontSize: 13
-    }
+        fontSize: 13,
+    },
 });
 
 export default Input;

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import ImgPicker from '../components/ImgPicker';
 import Input from '../components/Input';
 import PrimaryButton from '../components/PrimaryButton';
+import SecondaryButton from '../components/SecondaryButton';
 import Colors from '../constants/Colors';
 import * as postsActions from '../store/actions/posts';
 
@@ -13,11 +14,11 @@ const formReducer = (state, action) => {
     if (action.type === FORM_INPUT_UPDATE) {
         const updatedValues = {
             ...state.inputValues,
-            [action.input]: action.value
+            [action.input]: action.value,
         };
         const updatedValidities = {
             ...state.inputValidities,
-            [action.input]: action.isValid
+            [action.input]: action.isValid,
         };
         let updatedFormIsValid = true;
         for (const key in updatedValidities) {
@@ -26,13 +27,19 @@ const formReducer = (state, action) => {
         return {
             formIsValid: updatedFormIsValid,
             inputValidities: updatedValidities,
-            inputValues: updatedValues
+            inputValues: updatedValues,
         };
     }
     return state;
 };
 
 const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTitle: '',
+        });
+    }, [navigation]);
+
     const [selectedImage, setSelectedImage] = useState();
 
     const dispatch = useDispatch();
@@ -58,7 +65,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
             latitude: true,
             longitude: true,
         },
-        formIsValid: false
+        formIsValid: false,
     });
 
     const imageTakenHandler = (image: any) => {
@@ -70,7 +77,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
                 type: FORM_INPUT_UPDATE,
                 value: inputValue,
                 isValid: inputValidity,
-                input: inputIdentifier
+                input: inputIdentifier,
             });
         },
         [dispatchFormState]
@@ -79,9 +86,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
     const submitHandler = useCallback(() => {
         console.log(formState);
         if (!formState.formIsValid) {
-            Alert.alert('Wrong input!', 'Please check the errors in the form.', [
-                { text: 'Okay' }
-            ]);
+            Alert.alert('Wrong input!', 'Please check the errors in the form.', [{ text: 'Okay' }]);
             return;
         }
 
@@ -104,7 +109,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
         <View style={styles.container}>
             <Input
                 id="title"
-                placeholder="What's fuzz about?"
+                placeholder="What's the fuzz about?"
                 errorText="Please enter a valid title!"
                 autoCorrect
                 returnKeyType="next"
@@ -114,7 +119,6 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
                 required
                 style={styles.titleInput}
             />
-
             <Input
                 id="question"
                 placeholder="Formulate the problem as a question..."
@@ -143,6 +147,12 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
             <ImgPicker onImageTaken={imageTakenHandler} />
             <View style={styles.buttonContainer}>
                 <PrimaryButton onPress={submitHandler} text="submit" />
+                <SecondaryButton
+                    onPress={() => {
+                        navigation.goBack();
+                    }}
+                    text="cancel"
+                />
             </View>
         </View>
     );
@@ -151,39 +161,43 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 30
+        margin: 30,
     },
     titleInput: {
-        borderColor: Colors.grey,
-        borderBottomWidth: 1,
-        marginBottom: 15,
+        borderColor: Colors.mainBlue,
+        backgroundColor: Colors.lightGrey,
+        borderWidth: 1,
         paddingVertical: 5,
-        paddingHorizontal: 3,
-        textAlign: 'right',
+        paddingHorizontal: 8,
         color: 'black',
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     questionInput: {
-        borderColor: Colors.grey,
-        borderBottomWidth: 1,
-        color: Colors.darkGrey,
-        marginBottom: 15,
+        borderColor: Colors.mainBlue,
+        backgroundColor: Colors.lightGrey,
+        borderWidth: 1,
+        color: Colors.mainBlue,
+        marginTop: 15,
         paddingVertical: 5,
-        paddingHorizontal: 5
+        paddingHorizontal: 8,
     },
     descriptionInput: {
-        borderColor: Colors.grey,
+        borderColor: Colors.mainBlue,
+        backgroundColor: Colors.lightGrey,
         borderWidth: 1,
-        color: Colors.darkGrey,
-        marginBottom: 15,
+        color: Colors.mainBlue,
+        marginTop: 15,
         paddingVertical: 5,
-        paddingHorizontal: 5,
-        textAlignVertical: 'top'
+        paddingHorizontal: 8,
+        textAlignVertical: 'top',
+        marginBottom: 10,
     },
     buttonContainer: {
-        alignItems: 'center'
-    }
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
 });
 
 export default AddNewPostScreen;
