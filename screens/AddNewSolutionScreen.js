@@ -62,7 +62,7 @@ const AddNewSolutionScreen = ({ navigation, route }) => {
                 modalVisible={modalVisible}
                 onSetVisible={() => {
                     setModalVisible(!modalVisible);
-                    setTimeout(navigation.goBack(), 3000);
+                    navigation.goBack();
                 }}
             />
         </View>
