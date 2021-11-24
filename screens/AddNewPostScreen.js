@@ -3,6 +3,7 @@ import { View, StyleSheet, Alert, TextInput } from 'react-native';
 import ImgPicker from '../components/ImgPicker';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
+import SuccessModal from '../components/SuccessModal';
 import Colors from '../constants/Colors';
 import { addPost } from '../api/post';
 import { retrieveData } from '../utils/AsyncStorageHelper';
@@ -75,6 +76,14 @@ const AddNewPostScreen = ({ navigation, route }) => {
                     text="cancel"
                 />
             </View>
+            <SuccessModal
+                newSolutionAdded={false}
+                modalVisible={modalVisible}
+                onSetVisible={() => {
+                    setModalVisible(!modalVisible);
+                    navigation.goBack();
+                }}
+            />
         </View>
     );
 };

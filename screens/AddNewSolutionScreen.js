@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { Modal, View, Text, Image, Pressable, StyleSheet, TextInput } from 'react-native';
 import ImgPicker from '../components/ImgPicker';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
@@ -54,6 +54,14 @@ const AddNewSolutionScreen = ({ navigation, route }) => {
                     text="cancel"
                 />
             </View>
+            <SuccessModal
+                newSolutionAdded={true}
+                modalVisible={modalVisible}
+                onSetVisible={() => {
+                    setModalVisible(!modalVisible);
+                    navigation.goBack();
+                }}
+            />
         </View>
     );
 };

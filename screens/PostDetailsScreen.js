@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
+import Colors from '../constants/Colors';
 
 const PostDetailsScreen = ({ navigation, route }) => {
     const { props } = route.params;
@@ -27,11 +28,12 @@ const PostDetailsScreen = ({ navigation, route }) => {
                     <Text style={styles.titleText}>{props.title}</Text>
                 </View>
                 <View>
-                    <Text style={styles.descriptionText}>{props.question}</Text>
+                    <Text style={styles.questionText}>{props.question}</Text>
                 </View>
             </View>
             <View style={styles.descriptionView}>
                 <ScrollView>
+                    <Text style={styles.retailer}>Tagged: {props.retailer}</Text>
                     <Text style={styles.descriptionText}>{props.description}</Text>
                 </ScrollView>
             </View>
@@ -124,20 +126,37 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 28,
         fontWeight: 'bold',
+        fontFamily: 'jost-bold',
         textAlign: 'left',
         color: '#ffffff',
         marginLeft: 10,
         marginTop: '5%',
     },
+    questionText: {
+        fontSize: 20,
+        fontFamily: 'jost',
+        textAlign: 'left',
+        color: '#ffffff',
+        marginHorizontal: 15,
+        marginTop: '5%',
+    },
     descriptionText: {
-        fontSize: 15,
         padding: 25,
+        paddingTop: 10,
         fontSize: 15,
+        fontFamily: 'jost',
         marginLeft: 10,
         marginTop: '0%',
         marginBottom: '10%',
         color: '#000',
         lineHeight: 22.9,
+    },
+    retailer: {
+        color: Colors.black,
+        fontFamily: 'jost-bold',
+        fontSize: 17,
+        paddingTop: 20,
+        paddingLeft: 20,
     },
 });
 
