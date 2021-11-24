@@ -45,7 +45,7 @@ const PostDetailsScreen = ({ navigation, route }) => {
             <View style={styles.descriptionView}>
                 <Text style={styles.retailer}>
                     <Icon name="md-location-sharp" size={25} color={Colors.black} style={styles.pin} />
-                    Pepco{props.retailerName}, {props.retailerAddress}
+                    {props.retailerName}, {props.retailerAddress}
                 </Text>
                 <ScrollView>
                     <Text style={styles.descriptionText}>
@@ -72,7 +72,9 @@ const PostDetailsScreen = ({ navigation, route }) => {
                 <SecondaryButton
                     text="add solution"
                     style={styles.addSolutionButton}
-                    onPress={() => navigation.navigate('AddNewSolution', { postId: props.postId })}
+                    onPress={() => {
+                        navigation.navigate('AddNewSolution', { postId: props.id });
+                    }}
                 />
             </View>
         </View>

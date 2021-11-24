@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Alert, StyleSheet, ActivityIndicator, Button } from 'react-native';
 import * as Location from 'expo-location';
 import Colors from '../constants/Colors';
@@ -11,6 +11,10 @@ const LocationPicker = (props: any) => {
     const [isFetching, setIsFetching] = useState(false);
     const [pickedLocation, setPickedLocation] = useState();
     const [geocode, setGeocode] = useState();
+
+    useEffect(async () => {
+        await getLocationHandler();
+    }, []);
 
     const getLocationHandler = async () => {
         try {
