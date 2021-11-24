@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground, Item } from 'react-native';
+import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { CustomHeaderButton } from '../components/CustomHeaderButton';
 
 const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     const { MainNavigator } = route.params;
@@ -10,6 +12,16 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
         navigation.setOptions({
             headerShown: true,
             headerTitle: '',
+            headerRight: () => (
+                <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                    <Item
+                        title="search"
+                        iconSize={45}
+                        iconName="heart-outline"
+                        onPress={() => navigation.navigate('AddNewSolution')} // todo
+                    />
+                </HeaderButtons>
+            ),
         });
     }, [navigation]);
 
@@ -17,7 +29,7 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
         <View style={styles.container}>
             <View style={styles.fixToText}>
                 <View style={styles.headerContainer}>
-                    <Text style={styles.Header}>LED in the shop window !</Text>
+                    <Text style={styles.Header}>LED in the shop wet !</Text>
                 </View>
                 {/* TO DO dorzucenie zmiennej czy kliniete rozwiazanie przez uzytkownika */}
                 {test ? (
