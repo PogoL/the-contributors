@@ -6,7 +6,7 @@ import { CustomHeaderButton } from '../components/CustomHeaderButton';
 
 const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     const { MainNavigator } = route.params;
-    const [test, setTest] = useState(true);
+    const [test, setTest] = useState(false);
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -14,12 +14,21 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
             headerTitle: '',
             headerRight: () => (
                 <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-                    <Item
-                        title="search"
-                        iconSize={45}
-                        iconName="heart-outline"
-                        onPress={() => navigation.navigate('AddNewSolution')} // todo
-                    />
+                    {test ? (
+                        <Item
+                            title="search"
+                            iconSize={1}
+                            iconName="heart"
+                            onPress={() => console.log('Unlike')} // todo lajki
+                        />
+                    ) : (
+                        <Item
+                            title="search"
+                            iconSize={1}
+                            iconName="heart-outline"
+                            onPress={() => console.log('Like')} // todo
+                        />
+                    )}
                 </HeaderButtons>
             ),
         });
