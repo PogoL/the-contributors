@@ -52,6 +52,8 @@ const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        position: 'absolute',
+        width: '100%',
     },
     image: {
         opacity: 0.3,
