@@ -49,12 +49,14 @@ const AddNewSolutionScreen = ({ navigation, route }) => {
             />
             <ImgPicker onImageTaken={setImage} />
             <View style={styles.buttonContainer}>
-                <PrimaryButton onPress={saveSolutionHandler} text="submit" />
+                <PrimaryButton onPress={saveSolutionHandler} text="submit" style={styles.button} textStyle={styles.buttonText} />
                 <SecondaryButton
                     onPress={() => {
                         navigation.goBack();
                     }}
                     text="cancel"
+                    style={styles.button}
+                    textStyle={styles.buttonText}
                 />
             </View>
             <SuccessModal
@@ -100,6 +102,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
+    },
+    button: {
+        width: 152,
+    },
+    buttonText: {
+        textAlign: 'center',
     },
 });
 
