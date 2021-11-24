@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => 
     return (
         <ScrollView style={styles.container}>
             <ImageBackground
-                source={require('../assets/images/login-screen.png')}
+                source={require('../assets/images/login-splash-screen.jpg')}
                 resizeMode="cover"
                 style={styles.imageContainer}
                 imageStyle={styles.image}>

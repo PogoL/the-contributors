@@ -25,6 +25,6 @@ export const getCurrentCordinates = async () => {
 };
 
 export const getDistanceText = (firstPlaceCordinates, secondPlaceCordinates) => {
-    var distance = haversine(firstPlaceCordinates, secondPlaceCordinates);
+    var distance = haversine(firstPlaceCordinates, secondPlaceCordinates) / 1000;
     return `${distance.toFixed(1)} km away from you`;
 };

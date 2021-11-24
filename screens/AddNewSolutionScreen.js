@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { Modal, View, Text, Image, Pressable, StyleSheet, TextInput } from 'react-native';
 import ImgPicker from '../components/ImgPicker';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 import Colors from '../constants/Colors';
 import Input from '../components/Input';
+import SuccessModal from '../components/SuccessModal';
 
 const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+    const [modalVisible, setModalVisible] = useState(false);
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: '',
@@ -30,7 +32,10 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
     };
 
     const saveSolutionHandler = () => {
-        navigation.goBack();
+        console.log(titleValue);
+        console.log(descriptionValue);
+        console.log(selectedImage);
+        setModalVisible(!modalVisible);
     };
 
     return (
@@ -63,11 +68,19 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
                 <PrimaryButton onPress={saveSolutionHandler} text="submit" />
                 <SecondaryButton
                     onPress={() => {
-                        navigation.goBack();
+                        setModalVisible(!modalVisible);
                     }}
                     text="cancel"
                 />
             </View>
+            <SuccessModal
+                newSolutionAdded={true}
+                modalVisible={modalVisible}
+                onSetVisible={() => {
+                    setModalVisible(!modalVisible);
+                    navigation.goBack();
+                }}
+            />
         </View>
     );
 };

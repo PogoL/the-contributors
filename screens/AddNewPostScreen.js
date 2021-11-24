@@ -5,6 +5,7 @@ import ImgPicker from '../components/ImgPicker';
 import Input from '../components/Input';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
+import SuccessModal from '../components/SuccessModal';
 import Colors from '../constants/Colors';
 import * as postsActions from '../store/actions/posts';
 
@@ -40,6 +41,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
         });
     }, [navigation]);
 
+    const [modalVisible, setModalVisible] = useState(false);
     const [selectedImage, setSelectedImage] = useState();
 
     const dispatch = useDispatch();
@@ -102,7 +104,7 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
             )
         );
 
-        navigation.goBack();
+        setModalVisible(true);
     }, [dispatch, formState, selectedImage]);
 
     return (
@@ -155,6 +157,14 @@ const AddNewPostScreen = ({ navigation, route }: { navigation: any, route: any }
                     text="cancel"
                 />
             </View>
+            <SuccessModal
+                newSolutionAdded={false}
+                modalVisible={modalVisible}
+                onSetVisible={() => {
+                    setModalVisible(!modalVisible);
+                    navigation.goBack();
+                }}
+            />
         </View>
     );
 };
