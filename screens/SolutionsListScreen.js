@@ -32,7 +32,9 @@ const styles = StyleSheet.create({
 const SolutionsListScreen = ({ navigation, route }) => {
     const [solutions, setSolutions] = useState([]);
 
-    const { postId } = route.params;
+    const { postId, question } = route.params;
+    console.log('route.params');
+    console.log(route.params);
     useEffect(async () => {
         var solutions = await fetchPostSolutions(postId);
         setSolutions(solutions);
@@ -56,9 +58,7 @@ const SolutionsListScreen = ({ navigation, route }) => {
     return (
         <View style={styles.container}>
             <View style={styles.rowView}>
-                <Text style={styles.header}>
-                    Do we still need to stand in this horrific concept with all this technology around?
-                </Text>
+                <Text style={styles.header}>{question}</Text>
             </View>
             <FlatList data={solutions} renderItem={({ item }) => <Solution {...item} />} />
         </View>

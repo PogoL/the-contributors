@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 });
 
 const Post = (props) => {
+    console.log(props);
     const [currentCordinates, setCurrentCordinates] = useState({
         latitude: null,
         longitude: null,
@@ -135,7 +136,7 @@ const Post = (props) => {
                         </View>
                         <View style={styles.secondColumn}>
                             <Text style={styles.header}>{props.title}</Text>
-                            <Text style={styles.description}>{props.description}</Text>
+                            <Text style={styles.description}>{props.question}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

@@ -64,6 +64,7 @@ const PostDetailsScreen = ({ navigation, route }) => {
                     onPress={() =>
                         navigation.navigate('SolutionList', {
                             postId: props.id,
+                            question: props.question,
                         })
                     }
                 />
