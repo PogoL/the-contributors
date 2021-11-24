@@ -1,13 +1,24 @@
-import React from 'react';
-import { ImageBackground, View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { ImageBackground, View, Text, StyleSheet, Button, TouchableOpacity, TextInput } from 'react-native';
 import Colors from '../constants/Colors';
+import { authenticateUser } from '../api/user';
 
 const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+    const [userName, onUserNameChange] = useState('');
+    const [password, onPasswordChange] = useState('');
+
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, [navigation]);
+
+    const onLoginClickHandler = async () => {
+        var isAuthenticated = await authenticateUser(userName, password);
+        if (isAuthenticated) {
+            navigation.navigate('PostsList');
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -18,18 +29,20 @@ const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => 
                 imageStyle={styles.image}>
                 <View style={styles.imageContainer}>
                     <Text style={styles.mainText}>appropose</Text>
-                    <TouchableOpacity
-                        onPress={() => {
-                            navigation.navigate('PostsList'); //todo change it to .replace()
-                        }}>
-                        <Text style={styles.loginButton}>log in</Text>
+                    <TextInput style={styles.input} onChangeText={onUserNameChange} value={userName} />
+                    <TextInput secureTextEntry={true} style={styles.input} onChangeText={onPasswordChange} value={password} />
+                    <TouchableOpacity onPress={onLoginClickHandler}>
+                        <Text style={styles.loginButton}>Login</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => {
-                            navigation.navigate('PostsList');
-                        }}>
-                        <Text style={styles.registerButton}>register</Text>
-                    </TouchableOpacity>
+                    <View style={styles.signUpContainer}>
+                        <Text style={styles.accountText}>Don’t have an Account?</Text>
+                        <TouchableOpacity
+                            onPress={() => {
+                                navigation.navigate('PostsList');
+                            }}>
+                            <Text style={styles.registerButton}>Sign Up</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ImageBackground>
         </View>
@@ -52,20 +65,47 @@ const styles = StyleSheet.create({
     mainText: {
         fontSize: 50,
         fontFamily: 'comforta-bold',
-        color: Colors.black,
-        margin: 30,
+        color: 'black',
+        marginBottom: 50,
+        marginTop: 160,
     },
     loginButton: {
-        fontSize: 34,
+        marginTop: 30,
+        fontSize: 20,
+        lineHeight: 20,
+        paddingVertical: 15,
+        textAlign: 'center',
+        width: 150,
+        textTransform: 'lowercase',
         fontFamily: 'comforta',
-        color: Colors.black,
-        margin: 20,
+        color: 'white',
+        backgroundColor: 'black',
     },
     registerButton: {
         fontSize: 25,
+        lineHeight: 25,
         fontFamily: 'comforta',
-        color: Colors.black,
-        marginTop: 20,
+        color: Colors.yellow,
+    },
+    accountText: {
+        lineHeight: 20,
+        marginRight: 5,
+        fontFamily: 'comforta',
+    },
+    signUpContainer: {
+        marginTop: 100,
+        fontWeight: '700',
+        width: 270,
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    input: {
+        textAlign: 'center',
+        borderBottomColor: Colors.grey,
+        borderBottomWidth: 2,
+        width: 270,
+        marginBottom: 20,
+        fontSize: 24,
     },
 });
 
