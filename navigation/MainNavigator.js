@@ -15,18 +15,15 @@ const Stack = createNativeStackNavigator();
 export default function MainNavigator() {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={
-                {
-                    headerTintColor: Colors.mainBlue,
+            <Stack.Navigator
+                screenOptions={{
+                    headerTintColor: Colors.black,
                     headerTitleStyle: {
-                        fontFamily: 'comforta-bold'
+                        fontFamily: 'comforta-bold',
                     },
-                    headerTitle: 'appropose'
+                    headerTitle: 'appropose',
                 }}>
-                <Stack.Screen
-                    name="Login"
-                    component={LoginScreen}
-                />
+                <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="PostsList" component={PostsListScreen} />
                 <Stack.Screen name="SolutionList" component={SolutionsListScreen} />
                 <Stack.Screen name="AddNewPost" component={AddNewPostScreen} />
