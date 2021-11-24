@@ -98,7 +98,7 @@ const Solution = (props) => {
                     <TouchableOpacity
                         style={styles.rowTouchableOpacity}
                         onPress={() => {
-                            navigation.navigate('SolutionDetails', { props });
+                            navigation.navigate('SolutionDetails', { ...props });
                         }}>
                         <View style={styles.test5}>
                             <Image
