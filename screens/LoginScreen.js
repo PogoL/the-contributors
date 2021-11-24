@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, View, Text, StyleSheet, Button, TouchableOpacity, TextInput } from 'react-native';
+import { ImageBackground, View, Text, StyleSheet, Button, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import Colors from '../constants/Colors';
 import { authenticateUser } from '../api/user';
 
@@ -21,7 +21,7 @@ const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => 
     };
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <ImageBackground
                 source={require('../assets/images/login-screen.png')}
                 resizeMode="cover"
@@ -45,15 +45,16 @@ const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => 
                     </View>
                 </View>
             </ImageBackground>
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        position: 'absolute',
-        width: '100%',
+        // position: 'absolute',
+        // width: '100%',
+        // height: '100%',
     },
     image: {
         opacity: 0.3,
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
     },
     mainText: {
-        fontSize: 50,
+        fontSize: 35,
         fontFamily: 'comforta-bold',
         color: 'black',
         marginBottom: 50,
@@ -84,9 +85,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
     },
     registerButton: {
-        fontSize: 25,
+        fontSize: 22.5,
         lineHeight: 25,
         fontFamily: 'comforta',
+        fontWeight: 'bold',
         color: Colors.yellow,
     },
     accountText: {
@@ -95,7 +97,10 @@ const styles = StyleSheet.create({
         fontFamily: 'comforta',
     },
     signUpContainer: {
-        marginTop: 100,
+        marginTop: '20%',
+        // marginbottom: '50%',
+        marginBottom: 100,
+
         fontWeight: '700',
         width: 270,
         display: 'flex',

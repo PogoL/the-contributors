@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 });
 
 const Post = (props) => {
+    // console.log(props);
     const [currentCordinates, setCurrentCordinates] = useState({
         latitude: null,
         longitude: null,

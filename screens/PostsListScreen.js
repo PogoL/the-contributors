@@ -37,7 +37,7 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
 
     return (
         <View style={styles.container}>
-            <FlatList data={posts} renderItem={({ item }) => <Post {...item}></Post>} />
+            <FlatList data={posts} renderItem={({ item }) => <Post navigation={navigation} {...item}></Post>} />
         </View>
     );
 };
