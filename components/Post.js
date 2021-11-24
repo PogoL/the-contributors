@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 25,
         paddingLeft: 0,
         backgroundColor: '#FFD233',
-        marginTop: '45%',
+        marginTop: '55%',
         paddingTop: 6,
         paddingBottom: 6,
         alignItems: 'center',
@@ -76,13 +76,13 @@ const styles = StyleSheet.create({
         color: '#000000',
         alignContent: 'center',
         textTransform: 'uppercase',
-        fontSize: 11,
+        fontSize: 10,
         fontFamily: 'jost',
     },
     timeAgoText: {
         color: '#000000',
         alignContent: 'center',
-        fontSize: 11,
+        fontSize: 10,
         textTransform: 'uppercase',
         fontFamily: 'jost',
     },
@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
 });
 
 const Post = (props) => {
-    console.log(props);
     const [currentCordinates, setCurrentCordinates] = useState({
         latitude: null,
         longitude: null,

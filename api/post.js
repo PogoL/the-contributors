@@ -18,7 +18,7 @@ export const addPost = async ({
     question,
     latitude,
     longitude,
-    retailer,
+    retailerName,
     userId,
     image,
     retailerAddress,
@@ -32,7 +32,7 @@ export const addPost = async ({
         formData.append('description', description);
         formData.append('latitude', latitude);
         formData.append('longitude', longitude);
-        formData.append('retailer', retailer);
+        formData.append('retailerName', retailerName);
         formData.append('retailerAddress', retailerAddress);
         formData.append('userId', user.id);
         console.log(formData);

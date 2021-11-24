@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { CustomHeaderButton } from '../components/CustomHeaderButton';
 

@@ -30,7 +30,7 @@ const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any 
     };
 
     const returnGeocodeHandler = (returnedGeocode: any) => {
-        const address = returnedGeocode.city + ', ' + returnedGeocode.name;
+        const address = returnedGeocode[0].city + ', ' + returnedGeocode[0].name;
         setRetailerAddress(address);
     };
 

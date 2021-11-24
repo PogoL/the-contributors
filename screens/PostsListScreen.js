@@ -48,7 +48,6 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
             ),
         });
     }, [navigation]);
-
     return (
         <View style={styles.container}>
             {refreshing ? <ActivityIndicator /> : null}

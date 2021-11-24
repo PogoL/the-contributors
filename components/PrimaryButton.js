@@ -14,7 +14,7 @@ const PrimaryButton = (props: any) => {
 
 const styles = StyleSheet.create({
     styledButton: {
-        backgroundColor: Colors.mainBlue,
+        backgroundColor: 'black',
         padding: 10,
         paddingHorizontal: 26,
     },

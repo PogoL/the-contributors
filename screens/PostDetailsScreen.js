@@ -44,7 +44,8 @@ const PostDetailsScreen = ({ navigation, route }) => {
             </View>
             <View style={styles.descriptionView}>
                 <Text style={styles.retailer}>
-                    O: Pepco{props.retailer}, {props.retailerLocation}
+                    <Icon name="md-location-sharp" size={25} color={Colors.black} style={styles.pin} />
+                    Pepco{props.retailerName}, {props.retailerAddress}
                 </Text>
                 <ScrollView>
                     <Text style={styles.descriptionText}>
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
     },
     descriptionText: {
         padding: 25,
-        paddingTop: 10,
+        paddingVertical: 15,
         fontSize: 15,
         fontFamily: 'jost',
         marginLeft: 10,
@@ -205,8 +206,10 @@ const styles = StyleSheet.create({
         color: Colors.black,
         fontFamily: 'jost-bold',
         fontSize: 17,
-        paddingTop: 20,
-        paddingLeft: 20,
+        padding: 20,
+    },
+    pin: {
+        color: Colors.black,
     },
 });
 

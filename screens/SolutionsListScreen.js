@@ -33,8 +33,7 @@ const SolutionsListScreen = ({ navigation, route }) => {
     const [solutions, setSolutions] = useState([]);
 
     const { postId, question } = route.params;
-    console.log('route.params');
-    console.log(route.params);
+
     useEffect(async () => {
         var solutions = await fetchPostSolutions(postId);
         setSolutions(solutions);

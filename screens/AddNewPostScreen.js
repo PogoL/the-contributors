@@ -38,7 +38,7 @@ const AddNewPostScreen = ({ navigation, route }) => {
             longitude: postLocation.longitude,
             userId: user.id,
             image,
-            retailer: postRetailer,
+            retailerName: postRetailer,
             retailerAddress: postRetailerAddress,
         });
 

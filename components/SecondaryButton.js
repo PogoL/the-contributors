@@ -6,7 +6,7 @@ const SecondaryButton = (props: any) => {
     return (
         <TouchableOpacity onPress={props.onPress}>
             <View style={[styles.styledButton, props.style]}>
-                <Text style={[styles.textm, props.textStyle]}>{props.text}</Text>
+                <Text style={[styles.text, props.textStyle]}>{props.text}</Text>
             </View>
         </TouchableOpacity>
     );
