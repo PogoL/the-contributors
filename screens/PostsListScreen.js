@@ -28,7 +28,6 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
     }, []);
 
     const onRefresh = async () => {
-        //Clear old data of the list
         setPosts([]);
         var posts = await fetchAllPosts();
         setPosts(posts);
@@ -53,13 +52,7 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
             <FlatList
                 data={posts}
                 renderItem={({ item }) => <Post navigation={navigation} {...item}></Post>}
-                refreshControl={
-                    <RefreshControl
-                        //refresh control used for the Pull to Refresh
-                        refreshing={refreshing}
-                        onRefresh={onRefresh}
-                    />
-                }
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
         </View>
     );

@@ -21,7 +21,7 @@ const AddNewPostScreen = ({ navigation, route }) => {
     }, [navigation]);
 
     const [modalVisible, setModalVisible] = useState(false);
-    //destructure
+
     const { postLocation, postRetailer, postRetailerAddress } = route.params;
 
     const submitHandler = async () => {

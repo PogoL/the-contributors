@@ -70,13 +70,7 @@ const SolutionsListScreen = ({ navigation, route }) => {
             <FlatList
                 data={solutions}
                 renderItem={({ item }) => <Solution {...item} />}
-                refreshControl={
-                    <RefreshControl
-                        //refresh control used for the Pull to Refresh
-                        refreshing={refreshing}
-                        onRefresh={onRefresh}
-                    />
-                }
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
         </View>
     );

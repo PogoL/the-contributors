@@ -19,7 +19,6 @@ const ImgPicker = (props: any) => {
         allowsEditing: true,
         aspect: [4, 3],
         quality: 0.5,
-        // base64: true
     };
 
     const takeImageHandler = async () => {
