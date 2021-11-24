@@ -30,7 +30,6 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
     const onRefresh = async () => {
         //Clear old data of the list
         setPosts([]);
-        //Call the Service to get the latest data
         var posts = await fetchAllPosts();
         setPosts(posts);
     };

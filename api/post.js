@@ -35,7 +35,7 @@ export const addPost = async ({
         formData.append('retailer', retailer);
         formData.append('retailerAddress', retailerAddress);
         formData.append('userId', user.id);
-        console.log(formData);
+        // console.log(formData);
         const url = `${vars.azureApiUrl}AddPostFunction?code=${vars.azureKey}`;
         await axios.post(url, formData);
     } catch (err) {

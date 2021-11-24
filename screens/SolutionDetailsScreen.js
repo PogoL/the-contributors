@@ -5,7 +5,12 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { CustomHeaderButton } from '../components/CustomHeaderButton';
 
 const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
-    const { MainNavigator } = route.params;
+    console.log(route.params);
+    const { MainNavigator, title, description, imageUrl } = route.params;
+    console.log('title');
+    console.log(title);
+    console.log(imageUrl);
+
     const [test, setTest] = useState(false);
 
     React.useLayoutEffect(() => {
@@ -37,21 +42,16 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
     return (
         <View style={styles.container}>
             <View style={styles.descriptionView}>
-                <Text style={styles.Header}>A television or short-screen projector can be placed in the shop window</Text>
+                <Text style={styles.Header}>{title}</Text>
                 <ScrollView>
-                    <Text style={styles.descriptionText}>
-                        A television or short-screen projector can be placed in the shop window. In this way we can adapt the
-                        messages displayed to the occasion more quickly than having to change the physical elements. In addition,
-                        we do not produce a lot of materials that become rubbish after the promotional action is over. Digital
-                        materials also do not require conventional transport.
-                    </Text>
+                    <Text style={styles.descriptionText}>{description}</Text>
                 </ScrollView>
             </View>
             <View style={styles.photoView}>
                 <ImageBackground
                     style={styles.image}
                     source={{
-                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HCZXxFiguAOHfZm73yqLomoS9DNCvMOQg&usqp=CAU',
+                        uri: imageUrl,
                     }}>
                     <View style={styles.background} />
                 </ImageBackground>
