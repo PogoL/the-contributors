@@ -8,6 +8,8 @@ import LoginScreen from '../screens/LoginScreen';
 import AddNewPostScreen from '../screens/AddNewPostScreen';
 import SetLocationScreen from '../screens/SetLocationScreen';
 import AddNewSolutionScreen from '../screens/AddNewSolutionScreen';
+import PostDetailsScreen from '../screens/PostDetailsScreen';
+import SolutionsListScreen from '../screens/SolutionsListScreen';
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -26,9 +28,11 @@ export default function MainNavigator() {
                     component={LoginScreen}
                 />
                 <Stack.Screen name="PostsList" component={PostsListScreen} />
+                <Stack.Screen name="SolutionList" component={SolutionsListScreen} />
                 <Stack.Screen name="AddNewPost" component={AddNewPostScreen} />
                 <Stack.Screen name="AddNewSolution" component={AddNewSolutionScreen} />
                 <Stack.Screen name="SetLocation" component={SetLocationScreen} />
+                <Stack.Screen name="PostDetails" component={PostDetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
