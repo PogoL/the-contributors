@@ -4,14 +4,14 @@ import LocationPicker from '../components/LocationPicker';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 
-const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+const SetLocationScreen = ({ navigation, route }: { navigation: any; route: any }) => {
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerTintColor: 'black',
             headerTitleStyle: {
-                fontFamily: 'jost-bold'
+                fontFamily: 'jost-bold',
             },
-            headerTitle: 'Confirm your location'
+            headerTitle: 'Confirm your location',
         });
     }, [navigation]);
 
@@ -27,8 +27,19 @@ const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any 
             <LocationPicker onLocationReturned={returnLocationHandler} />
             {location ? (
                 <View style={styles.yesNoContainer}>
-                    <PrimaryButton text="Yes" onPress={() => { navigation.replace('AddNewPost', {postLocation:location}) }} styles={styles.primaryButton} />
-                    <SecondaryButton text="No" onPress={() => { Alert.alert('Stop lying!') }} />
+                    <PrimaryButton
+                        text="Yes"
+                        onPress={() => {
+                            navigation.replace('AddNewPost', { postLocation: location });
+                        }}
+                        styles={styles.primaryButton}
+                    />
+                    <SecondaryButton
+                        text="No"
+                        onPress={() => {
+                            Alert.alert('Stop lying!');
+                        }}
+                    />
                 </View>
             ) : (
                 <View></View>
@@ -41,11 +52,11 @@ const styles = StyleSheet.create({
     yesNoContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     primaryButton: {
-        marginRight:20
-    }
+        marginRight: 20,
+    },
 });
 
 export default SetLocationScreen;

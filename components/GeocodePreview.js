@@ -16,7 +16,9 @@ const GeocodePreview = (props: any) => {
             {geocode ? (
                 <View style={styles.textContainer}>
                     <Text style={styles.normalText}>We have located you in:</Text>
-                    <Text style={styles.boldText}>{geocode.city}, {geocode.street}.</Text>
+                    <Text style={styles.boldText}>
+                        {geocode.city}, {geocode.street}.
+                    </Text>
                     <Text style={styles.normalText}>Is that correct?</Text>
                 </View>
             ) : (
@@ -35,13 +37,13 @@ const styles = StyleSheet.create({
     normalText: {
         fontSize: 15,
         textAlign: 'center',
-        color: Colors.mainBlue
+        color: Colors.mainBlue,
     },
     boldText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: Colors.mainBlue
-    }
+        color: Colors.mainBlue,
+    },
 });
 
 export default GeocodePreview;
