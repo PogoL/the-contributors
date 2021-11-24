@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
+import PrimaryButton from '../components/PrimaryButton';
+import SecondaryButton from '../components/SecondaryButton';
 import Colors from '../constants/Colors';
 
 const PostDetailsScreen = ({ navigation, route }) => {
@@ -30,28 +32,40 @@ const PostDetailsScreen = ({ navigation, route }) => {
                 <View>
                     <Text style={styles.questionText}>{props.question}</Text>
                 </View>
+                <View>
+                    <Text></Text>
+                </View>
             </View>
             <View style={styles.descriptionView}>
+                <Text style={styles.retailer}>
+                    O: Pepco{props.retailer}, {props.retailerLocation}
+                </Text>
                 <ScrollView>
-                    <Text style={styles.retailer}>Tagged: {props.retailer}</Text>
-                    <Text style={styles.descriptionText}>{props.description}</Text>
+                    <Text style={styles.descriptionText}>
+                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
+                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
+                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
+                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoiasgaweg waeil gnawe gio;whaegweiaghpgewag
+                        iowaehgoiasgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
+                        {props.description}
+                    </Text>
                 </ScrollView>
             </View>
             <View style={styles.buttonsView}>
-                <Pressable
+                <PrimaryButton
+                    text="check solutions"
                     style={styles.checkSolutionsButton}
                     onPress={() =>
                         navigation.navigate('SolutionList', {
                             postId: props.id,
                         })
-                    }>
-                    <Text style={styles.checkSolutionText}>check solutions</Text>
-                </Pressable>
-                <Pressable
+                    }
+                />
+                <SecondaryButton
+                    text="add solution"
                     style={styles.addSolutionButton}
-                    onPress={() => navigation.navigate('AddNewSolution', { postId: props.id })}>
-                    <Text style={styles.addSolutionText}>add solution</Text>
-                </Pressable>
+                    onPress={() => navigation.navigate('AddNewSolution')}
+                />
             </View>
         </View>
     );

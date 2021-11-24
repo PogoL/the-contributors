@@ -18,11 +18,25 @@ const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any 
     }, [navigation]);
 
     const [location, setLocation] = useState();
+    const [retailerAddress, setRetailerAddress] = useState();
     const [retailerName, setRetailerName] = useState();
+
+    const retailerChangeHandler = (text) => {
+        setRetailerName(text);
+    };
+
+    const returnLocationHandler = (returnedLocation: any) => {
+        setLocation(returnedLocation);
+    };
+
+    const returnGeocodeHandler = (returnedGeocode: any) => {
+        const address = returnedGeocode.city + ', ' + returnedGeocode.name;
+        setRetailerAddress(address);
+    };
 
     return (
         <ScrollView style={styles.container}>
-            <LocationPicker onLocationReturned={setLocation} />
+            <LocationPicker onLocationReturned={returnLocationHandler} onGeocodeReturned={returnGeocodeHandler} />
             {location ? (
                 <View style={styles.container}>
                     <TextInput
@@ -35,7 +49,11 @@ const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any 
                         <PrimaryButton
                             text="Yes"
                             onPress={() => {
-                                navigation.replace('AddNewPost', { postLocation: location, postRetailer: retailerName });
+                                navigation.replace('AddNewPost', {
+                                    postLocation: location,
+                                    postRetailer: retailerName,
+                                    postRetailerAddress: retailerAddress,
+                                });
                             }}
                             styles={styles.button}
                         />

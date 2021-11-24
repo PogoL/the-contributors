@@ -17,7 +17,7 @@ const GeocodePreview = (props: any) => {
                 <View style={styles.textContainer}>
                     <Text style={styles.normalText}>We have located you in:</Text>
                     <Text style={styles.boldText}>
-                        {geocode.city}, {geocode.street}.
+                        {geocode.city}, {geocode.name}.
                     </Text>
                     <Text style={styles.normalText}>Is that correct?</Text>
                 </View>

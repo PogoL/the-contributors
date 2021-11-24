@@ -20,7 +20,9 @@ const AddNewPostScreen = ({ navigation, route }) => {
         });
     }, [navigation]);
 
-    const { postLocation, postRetailer } = route.params;
+    const [modalVisible, setModalVisible] = useState(false);
+    //destructure
+    const { postLocation, postRetailer, postRetailerAddress } = route.params;
 
     const submitHandler = async () => {
         if (!validateForm()) {
@@ -32,14 +34,15 @@ const AddNewPostScreen = ({ navigation, route }) => {
             title,
             question,
             description,
-            image,
-            userId: user.id,
             latitude: postLocation.latitude,
             longitude: postLocation.longitude,
+            userId: user.id,
+            image,
             retailer: postRetailer,
+            retailerAddress: postRetailerAddress,
         });
 
-        navigation.goBack();
+        setModalVisible(true);
     };
 
     const validateForm = () => {

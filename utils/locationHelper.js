@@ -1,5 +1,6 @@
 import * as Location from 'expo-location';
 import haversine from 'haversine-distance';
+import ENV from '../envVars';
 
 const verifyPermissions = async () => {
     const result = await Location.requestForegroundPermissionsAsync();
@@ -15,6 +16,7 @@ export const getCurrentCordinates = async () => {
     if (!hasPermission) {
         return;
     }
+    Location.setGoogleApiKey(ENV.googleApiKey);
     const location = await Location.getCurrentPositionAsync({});
     var currentCordinates = {
         latitude: location.coords.latitude,

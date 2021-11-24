@@ -37,7 +37,7 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
     return (
         <View style={styles.container}>
             <View style={styles.descriptionView}>
-                <Text style={styles.Header}>A television or short-screen projector can be placed in the shop wi</Text>
+                <Text style={styles.Header}>A television or short-screen projector can be placed in the shop window</Text>
                 <ScrollView>
                     <Text style={styles.descriptionText}>
                         A television or short-screen projector can be placed in the shop window. In this way we can adapt the
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     },
     photoView: {
         flex: 3,
-        // height: '100%',
     },
     headerContainer: {
         marginLeft: 25,
@@ -117,14 +116,16 @@ const styles = StyleSheet.create({
         width: '25%',
     },
     Header: {
-        height: '25%',
         lineHeight: 30,
-        fontSize: 23,
+        fontSize: 25,
         marginLeft: '6.5%',
+        marginBottom: 5,
         width: '80%',
         fontWeight: 'bold',
         textAlign: 'left',
         color: '#000',
+        maxHeight: '30%',
+        minHeight: '7.5%',
     },
 });
 

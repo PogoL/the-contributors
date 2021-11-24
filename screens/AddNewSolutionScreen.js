@@ -26,7 +26,8 @@ const AddNewSolutionScreen = ({ navigation, route }) => {
             image,
             postId,
         });
-        navigation.goBack();
+
+        setModalVisible(true);
     };
 
     return (

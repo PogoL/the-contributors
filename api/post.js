@@ -8,11 +8,21 @@ export const fetchAllPosts = async () => {
         var response = await axios.get(url);
         return response.data;
     } catch (err) {
-        console.errorr(err);
+        console.error(err);
     }
 };
 
-export const addPost = async ({ title, description, question, latitude, longitude, retailer, userId, image }) => {
+export const addPost = async ({
+    title,
+    description,
+    question,
+    latitude,
+    longitude,
+    retailer,
+    userId,
+    image,
+    retailerAddress,
+}) => {
     try {
         var formData = new FormData();
         var user = JSON.parse(await retrieveData('user'));
@@ -23,6 +33,7 @@ export const addPost = async ({ title, description, question, latitude, longitud
         formData.append('latitude', latitude);
         formData.append('longitude', longitude);
         formData.append('retailer', retailer);
+        formData.append('retailerAddress', retailerAddress);
         formData.append('userId', user.id);
         console.log(formData);
         const url = `${vars.azureApiUrl}AddPostFunction?code=${vars.azureKey}`;

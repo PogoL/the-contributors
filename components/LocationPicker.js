@@ -18,10 +18,11 @@ const LocationPicker = (props: any) => {
             const currentLocation = await getCurrentCordinates({});
             setPickedLocation(currentLocation);
 
-            const geocode = await Location.reverseGeocodeAsync(currentLocation);
+            const geocode = await Location.reverseGeocodeAsync(currentLocation, { useGoogleMaps: true });
             setGeocode(geocode[0]);
 
             props.onLocationReturned(currentLocation);
+            props.onGeocodeReturned(geocode);
         } catch (err) {
             Alert.alert('Could not fetch location!', 'Please try again later or pick a location on the map.', [{ text: 'Okay' }]);
         }
