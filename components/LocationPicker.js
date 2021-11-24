@@ -45,9 +45,7 @@ const LocationPicker = (props: any) => {
 
 const styles = StyleSheet.create({
     locationPicker: {
-        marginBottom: 15,
-        marginTop: 50,
-        marginHorizontal: 15,
+        marginTop: 20,
     },
     mapPreview: {
         marginBottom: 50,

@@ -1,8 +1,8 @@
-import Post from "../../models/Post";
-import { ADD_POST } from "../actions/posts";
+import Post from '../../models/Post';
+import { ADD_POST } from '../actions/posts';
 
 const initialState = {
-    availablePosts: []
+    availablePosts: [],
 };
 
 export default (state = initialState, action) => {
@@ -16,7 +16,8 @@ export default (state = initialState, action) => {
                 action.postData.latitude,
                 action.postData.longitude,
                 'u1',
-                action.postData.imageUrl
+                action.postData.imageUrl,
+                action.postData.retailer
             );
             return {
                 ...state,

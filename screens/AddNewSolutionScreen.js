@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
 import ImgPicker from '../components/ImgPicker';
 import PrimaryButton from '../components/PrimaryButton';
+import SecondaryButton from '../components/SecondaryButton';
 import Colors from '../constants/Colors';
+import Input from '../components/Input';
 
 const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTitle: '',
+        });
+    }, [navigation]);
+
     const [titleValue, setTitleValue] = useState('');
     const [descriptionValue, setDescriptionValue] = useState('');
     const [selectedImage, setSelectedImage] = useState();
@@ -34,23 +42,38 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
 
     return (
         <View style={styles.container}>
-            <TextInput
-                style={styles.titleInput}
-                onChangeText={titleChangeHandler}
+            <Input
+                id="title"
                 placeholder="What do you propose?"
-                value={titleValue}
+                autoCorrect
+                returnKeyType="next"
+                onInputChange={titleChangeHandler}
+                initialValue={''}
+                initiallyValid={false}
+                required
+                style={styles.titleInput}
             />
-            <TextInput
-                multiline
-                numberOfLines={9}
-                style={styles.descriptionInput}
-                onChangeText={descriptionChangeHandler}
+            <Input
+                id="description"
                 placeholder="Tell us more about your idea..."
-                value={descriptionValue}
+                autoCorrect
+                onInputChange={descriptionChangeHandler}
+                initialValue={''}
+                initiallyValid={false}
+                required
+                multiline
+                numberOfLines={11}
+                style={styles.descriptionInput}
             />
             <ImgPicker onImageTaken={imageTakenHandler} />
             <View style={styles.buttonContainer}>
                 <PrimaryButton onPress={saveSolutionHandler} text="submit" />
+                <SecondaryButton
+                    onPress={() => {
+                        navigation.goBack();
+                    }}
+                    text="cancel"
+                />
             </View>
         </View>
     );
@@ -59,31 +82,35 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 30
+        marginVertical: 20,
+        marginHorizontal: 30,
     },
     titleInput: {
-        borderColor: Colors.grey,
-        borderBottomWidth: 1,
-        marginBottom: 15,
+        borderColor: Colors.mainBlue,
+        backgroundColor: Colors.lightGrey,
+        borderWidth: 1,
         paddingVertical: 5,
-        paddingHorizontal: 3,
-        textAlign: 'right',
+        paddingHorizontal: 8,
         color: 'black',
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     descriptionInput: {
-        borderColor: Colors.grey,
+        borderColor: Colors.mainBlue,
+        backgroundColor: Colors.lightGrey,
         borderWidth: 1,
-        color: Colors.darkGrey,
-        marginBottom: 15,
+        color: Colors.mainBlue,
+        marginTop: 20,
         paddingVertical: 5,
-        paddingHorizontal: 5,
-        textAlignVertical: 'top'
+        paddingHorizontal: 8,
+        textAlignVertical: 'top',
+        marginBottom: 10,
     },
     buttonContainer: {
-        alignItems: 'center'
-    }
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
 });
 
 export default AddNewSolutionScreen;

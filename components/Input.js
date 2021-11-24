@@ -66,11 +66,11 @@ const Input = (props: any) => {
     return (
         <View style={styles.formControl}>
             <TextInput {...props} value={inputState.value} onChangeText={textChangeHandler} onBlur={lostFocusHandler} />
-            {!inputState.isValid && inputState.touched && (
+            {/* {!inputState.isValid && inputState.touched && (
                 <View style={styles.errorContainer}>
                     <Text style={styles.errorText}>{props.errorText}</Text>
                 </View>
-            )}
+            )} */}
         </View>
     );
 };

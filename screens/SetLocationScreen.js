@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, Alert, ScrollView } from 'react-native';
+import Input from '../components/Input';
 import LocationPicker from '../components/LocationPicker';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
+import Colors from '../constants/Colors';
 
-const SetLocationScreen = ({ navigation, route }: { navigation: any; route: any }) => {
+const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerTintColor: 'black',
@@ -16,46 +18,76 @@ const SetLocationScreen = ({ navigation, route }: { navigation: any; route: any 
     }, [navigation]);
 
     const [location, setLocation] = useState();
+    const [retailerName, setRetailerName] = useState();
+
+    const retailerChangeHandler = (text) => {
+        setRetailerName(text);
+    };
 
     const returnLocationHandler = (returnedLocation: any) => {
-        //console.log(returnedLocation);
         setLocation(returnedLocation);
     };
 
     return (
-        <View>
+        <ScrollView style={styles.container}>
             <LocationPicker onLocationReturned={returnLocationHandler} />
             {location ? (
-                <View style={styles.yesNoContainer}>
-                    <PrimaryButton
-                        text="Yes"
-                        onPress={() => {
-                            navigation.replace('AddNewPost', { postLocation: location });
-                        }}
-                        styles={styles.primaryButton}
+                <View style={styles.container}>
+                    <TextInput
+                        id="retailerName"
+                        placeholder="what retailer you are in?"
+                        onChangeText={retailerChangeHandler}
+                        initialValue={''}
+                        initiallyValid={false}
+                        required
+                        style={styles.retailerNameInput}
+                        maxLength={30}
                     />
-                    <SecondaryButton
-                        text="No"
-                        onPress={() => {
-                            Alert.alert('Stop lying!');
-                        }}
-                    />
+                    <View style={styles.yesNoContainer}>
+                        <PrimaryButton
+                            text="Yes"
+                            onPress={() => {
+                                navigation.replace('AddNewPost', { postLocation: location, postRetailer: retailerName });
+                            }}
+                            styles={styles.button}
+                        />
+                        <SecondaryButton
+                            text="No"
+                            onPress={() => {
+                                Alert.alert('Stop lying!');
+                            }}
+                            styles={styles.button}
+                        />
+                    </View>
                 </View>
             ) : (
                 <View></View>
             )}
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        margin: 20,
+    },
     yesNoContainer: {
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         flexDirection: 'row',
     },
-    primaryButton: {
-        marginRight: 20,
+    button: {
+        paddingHorizontal: 40,
+    },
+    retailerNameInput: {
+        borderColor: Colors.mainBlue,
+        backgroundColor: Colors.lightGrey,
+        borderWidth: 1,
+        color: Colors.mainBlue,
+        paddingVertical: 5,
+        paddingHorizontal: 8,
+        marginBottom: 15,
     },
 });
 

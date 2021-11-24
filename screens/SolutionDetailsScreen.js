@@ -5,13 +5,17 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
     const { MainNavigator } = route.params;
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            headerShown: false,
+            headerShown: true,
+            headerTitle: '',
         });
     }, [navigation]);
 
     return (
         <View style={styles.container}>
-            <View style={styles.photoView}>
+            <View>
+                <Text style={styles.Header}>Sale madness!</Text>
+            </View>
+            {/* <View style={styles.photoView}>
                 <ImageBackground
                     style={styles.tinyLogo}
                     source={{
@@ -53,7 +57,7 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
                 <Pressable style={styles.addButton} onPress={() => MainNavigator.navigate('AddNewSolution')}>
                     <Text style={{ fontSize: 15, marginTop: '7.5%', color: '#000000' }}>add solution</Text>
                 </Pressable>
-            </View>
+            </View> */}
         </View>
     );
 };
@@ -64,6 +68,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        backgroundColor: '#fff',
     },
     photoView: {
         height: '50%',
