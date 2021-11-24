@@ -68,7 +68,7 @@ const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: a
                 <PrimaryButton onPress={saveSolutionHandler} text="submit" />
                 <SecondaryButton
                     onPress={() => {
-                        setModalVisible(!modalVisible);
+                        navigation.goBack();
                     }}
                     text="cancel"
                 />
