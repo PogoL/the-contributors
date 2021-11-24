@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         width: '100%',
         height: 250,
-        borderColor: Colors.grey,
+        borderColor: 'rgba(0,0,0,0.8)',
         borderWidth: 1,
     },
 });

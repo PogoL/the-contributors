@@ -48,14 +48,7 @@ const PostDetailsScreen = ({ navigation, route }) => {
                     {props.retailerName}, {props.retailerAddress}
                 </Text>
                 <ScrollView>
-                    <Text style={styles.descriptionText}>
-                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
-                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
-                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
-                        asgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoiasgaweg waeil gnawe gio;whaegweiaghpgewag
-                        iowaehgoiasgaweg waeil gnawe gio;whaegweiaghpgewag iowaehgoi
-                        {props.description}
-                    </Text>
+                    <Text style={styles.descriptionText}>{props.description}</Text>
                 </ScrollView>
             </View>
             <View style={styles.buttonsView}>

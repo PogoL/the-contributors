@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     header: {
         textAlign: 'center',
         fontSize: 15,
+        fontFamily: 'jost',
         paddingLeft: 25,
         paddingRight: 25,
     },

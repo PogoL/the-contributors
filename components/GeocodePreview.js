@@ -19,7 +19,7 @@ const GeocodePreview = (props: any) => {
                     <Text style={styles.boldText}>
                         {geocode.city}, {geocode.name}.
                     </Text>
-                    <Text style={styles.normalText}>Is that correct?</Text>
+                    <Text style={[styles.normalText, { marginTop: 5 }]}>Is that correct?</Text>
                 </View>
             ) : (
                 props.children
@@ -33,15 +33,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 20,
+        fontFamily: 'jost',
     },
     normalText: {
         fontSize: 15,
         textAlign: 'center',
+        fontFamily: 'jost',
         color: Colors.mainBlue,
     },
     boldText: {
         fontSize: 20,
-        fontWeight: 'bold',
+        fontFamily: 'jost-bold',
         color: Colors.mainBlue,
     },
 });

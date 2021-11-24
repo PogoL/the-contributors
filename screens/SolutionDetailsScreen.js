@@ -4,11 +4,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { CustomHeaderButton } from '../components/CustomHeaderButton';
 
 const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
-    console.log(route.params);
     const { MainNavigator, title, description, imageUrl } = route.params;
-    console.log('title');
-    console.log(title);
-    console.log(imageUrl);
 
     const [test, setTest] = useState(false);
 
@@ -43,10 +39,7 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
             <View style={styles.descriptionView}>
                 <Text style={styles.Header}>{title}</Text>
                 <ScrollView>
-                    <Text style={styles.descriptionText}>
-                        {description}
-                        adasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasda
-                    </Text>
+                    <Text style={styles.descriptionText}>{description}</Text>
                 </ScrollView>
             </View>
             <View style={styles.photoView}>
