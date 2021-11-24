@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
 
-const PostDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     const { MainNavigator } = route.params;
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PostDetailsScreen;
+export default SolutionDetailsScreen;

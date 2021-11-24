@@ -6,17 +6,20 @@ import { authenticateUser } from '../api/user';
 const LoginScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     const [userName, onUserNameChange] = useState('');
     const [password, onPasswordChange] = useState('');
+
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, [navigation]);
+
     const onLoginClickHandler = async () => {
         var isAuthenticated = await authenticateUser(userName, password);
         if (isAuthenticated) {
             navigation.navigate('PostsList');
         }
     };
+
     return (
         <View style={styles.container}>
             <ImageBackground

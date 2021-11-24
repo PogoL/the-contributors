@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View, Text, Image, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
+import { View, Text, Image, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import Colors from '../constants/Colors';
 import * as ImagePicker from 'expo-image-picker';
 import SecondaryButton from './SecondaryButton';
@@ -28,9 +28,10 @@ const ImgPicker = (props: any) => {
             return;
         }
         const image = await ImagePicker.launchCameraAsync(imagePickerOptions);
-
-        setPickedImage(image);
-        props.onImageTaken(image);
+        if (image.cancelled == false) {
+            setPickedImage(image);
+            props.onImageTaken(image);
+        }
     };
 
     const chooseImageHandler = async () => {
@@ -39,17 +40,21 @@ const ImgPicker = (props: any) => {
             return;
         }
         const image = await ImagePicker.launchImageLibraryAsync(imagePickerOptions);
-        setPickedImage(image);
-        props.onImageTaken(image);
+        if (image.cancelled == false) {
+            setPickedImage(image);
+            props.onImageTaken(image);
+        }
     };
 
     return (
         <View style={styles.imagePicker}>
-            <View style={styles.imagePreview}>
+            <View style={{ width: '100%' }}>
                 {!pickedImage ? (
-                    <Text style={styles.noImageText}>No image picked yet.</Text>
+                    <View></View>
                 ) : (
-                    <Image source={{ uri: pickedImage.uri }} style={styles.image} />
+                    <View style={styles.imagePreview}>
+                        <Image source={{ uri: pickedImage.uri }} style={styles.image} />
+                    </View>
                 )}
             </View>
             <View style={styles.buttonContainer}>
@@ -59,12 +64,12 @@ const ImgPicker = (props: any) => {
             </View>
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     imagePicker: {
         alignItems: 'center',
-        marginBottom: 15
+        marginBottom: 15,
     },
     imagePreview: {
         width: '100%',
@@ -72,22 +77,22 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: Colors.grey,
-        borderWidth: 1
+        borderColor: Colors.mainBlue,
+        borderWidth: 1,
     },
     image: {
         width: '100%',
-        height: '100%'
+        height: '100%',
     },
     buttonContainer: {
         flexDirection: 'row',
-        margin: 10
+        margin: 10,
     },
     noImageText: {
         textAlign: 'center',
+        marginTop: 5,
         padding: 5,
-        marginTop: 2
-    }
+    },
 });
 
 export default ImgPicker;

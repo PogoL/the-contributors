@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 25,
         paddingLeft: 0,
         backgroundColor: '#FFD233',
-        marginTop: '5%',
+        marginTop: '75%',
         paddingTop: 6,
         paddingBottom: 6,
         alignItems: 'center',
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         padding: 5,
     },
 });
-const Post = (props) => {
+const Solution = (props) => {
     return (
         <View style={styles.MainRowBackground}>
             <View style={styles.rowBackground}>
@@ -93,7 +93,7 @@ const Post = (props) => {
                     <TouchableOpacity
                         style={styles.rowTouchableOpacity}
                         onPress={() => {
-                            props.navigation.navigate('PostDetails', { Properties: props, MainNavigator: props.navigation });
+                            props.navigation.navigate('SolutionDetails', { Properties: props, MainNavigator: props.navigation });
                         }}>
                         <View style={styles.test5}>
                             <Image
@@ -102,9 +102,6 @@ const Post = (props) => {
                                     uri: props.photo,
                                 }}
                             />
-                            <View style={styles.rowView2}>
-                                <Text style={styles.testTxt1}>{props.howFar}</Text>
-                            </View>
                             <View style={styles.rowView3}>
                                 <Text style={styles.testTxt2}>{props.time}</Text>
                             </View>
@@ -120,4 +117,4 @@ const Post = (props) => {
     );
 };
 
-export default Post;
+export default Solution;

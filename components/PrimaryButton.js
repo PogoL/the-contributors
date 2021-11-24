@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from '../constants/Colors';
 
 const PrimaryButton = (props: any) => {
@@ -9,21 +9,20 @@ const PrimaryButton = (props: any) => {
                 <Text style={styles.text}>{props.text}</Text>
             </View>
         </TouchableOpacity>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     styledButton: {
         backgroundColor: Colors.mainBlue,
-        padding: 5,
-        borderRadius: 20,
-        paddingHorizontal: 30
+        padding: 10,
+        paddingHorizontal: 26,
     },
     text: {
         color: Colors.primary,
         fontFamily: 'jost',
-        fontSize: 18
-    }
+        fontSize: 18,
+    },
 });
 
 export default PrimaryButton;
