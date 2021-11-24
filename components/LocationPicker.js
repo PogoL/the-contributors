@@ -5,38 +5,17 @@ import Colors from '../constants/Colors';
 import MapPreview from './MapPreview';
 import GeocodePreview from './GeocodePreview';
 import SecondaryButton from './SecondaryButton';
+import { getCurrentCordinates } from '../utils/locationHelper';
 
 const LocationPicker = (props: any) => {
     const [isFetching, setIsFetching] = useState(false);
     const [pickedLocation, setPickedLocation] = useState();
     const [geocode, setGeocode] = useState();
 
-    const verifyPermissions = async () => {
-        const result = await Location.requestForegroundPermissionsAsync();
-        if (result.status !== 'granted') {
-            Alert.alert(
-                'Insufficient permissions!',
-                'You need to grant location permissions to use this app.',
-                [{ text: 'Okay' }]
-            );
-            return false;
-        }
-        return true;
-    };
-
     const getLocationHandler = async () => {
-        const hasPermission = await verifyPermissions();
-        if (!hasPermission) {
-            return;
-        }
-
         try {
             setIsFetching(true);
-            const location = await Location.getCurrentPositionAsync({});
-            var currentLocation = {
-                latitude: location.coords.latitude,
-                longitude: location.coords.longitude
-            };
+            const currentLocation = await getCurrentCordinates({});
             setPickedLocation(currentLocation);
 
             const geocode = await Location.reverseGeocodeAsync(currentLocation);
@@ -44,11 +23,7 @@ const LocationPicker = (props: any) => {
 
             props.onLocationReturned(currentLocation);
         } catch (err) {
-            Alert.alert(
-                'Could not fetch location!',
-                'Please try again later or pick a location on the map.',
-                [{ text: 'Okay' }]
-            );
+            Alert.alert('Could not fetch location!', 'Please try again later or pick a location on the map.', [{ text: 'Okay' }]);
         }
         setIsFetching(false);
     };
@@ -59,17 +34,14 @@ const LocationPicker = (props: any) => {
                 {isFetching ? (
                     <ActivityIndicator size="large" color={Colors.mainBlue} />
                 ) : (
-                    <SecondaryButton
-                        text="Get Location"
-                        onPress={getLocationHandler}
-                    />
+                    <SecondaryButton text="Get Location" onPress={getLocationHandler} />
                 )}
             </MapPreview>
 
             <GeocodePreview geocode={geocode} />
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     locationPicker: {

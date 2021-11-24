@@ -14,7 +14,7 @@ export const retrieveData = async (key) => {
         if (value !== null) {
             return value;
         }
-        throw Error("Can't save data to storage");
+        throw Error("Can't retrieve data from storage");
     } catch (error) {
         console.log(error);
     }
