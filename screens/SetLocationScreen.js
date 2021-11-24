@@ -20,26 +20,14 @@ const SetLocationScreen = ({ navigation, route }: { navigation: any, route: any 
     const [location, setLocation] = useState();
     const [retailerName, setRetailerName] = useState();
 
-    const retailerChangeHandler = (text) => {
-        setRetailerName(text);
-    };
-
-    const returnLocationHandler = (returnedLocation: any) => {
-        setLocation(returnedLocation);
-    };
-
     return (
         <ScrollView style={styles.container}>
-            <LocationPicker onLocationReturned={returnLocationHandler} />
+            <LocationPicker onLocationReturned={setLocation} />
             {location ? (
                 <View style={styles.container}>
                     <TextInput
-                        id="retailerName"
                         placeholder="what retailer you are in?"
-                        onChangeText={retailerChangeHandler}
-                        initialValue={''}
-                        initiallyValid={false}
-                        required
+                        onChangeText={setRetailerName}
                         style={styles.retailerNameInput}
                         maxLength={30}
                     />

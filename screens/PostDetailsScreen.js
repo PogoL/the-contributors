@@ -45,7 +45,9 @@ const PostDetailsScreen = ({ navigation, route }) => {
                     }>
                     <Text style={styles.checkSolutionText}>check solutions</Text>
                 </Pressable>
-                <Pressable style={styles.addSolutionButton} onPress={() => navigation.navigate('AddNewSolution')}>
+                <Pressable
+                    style={styles.addSolutionButton}
+                    onPress={() => navigation.navigate('AddNewSolution', { postId: props.id })}>
                     <Text style={styles.addSolutionText}>add solution</Text>
                 </Pressable>
             </View>

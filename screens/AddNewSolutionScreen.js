@@ -5,60 +5,46 @@ import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 import Colors from '../constants/Colors';
 import Input from '../components/Input';
+import { addSolution } from '../api/solutions';
 
-const AddNewSolutionScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+const AddNewSolutionScreen = ({ navigation, route }) => {
+    const { postId } = route.params;
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: '',
         });
     }, [navigation]);
 
-    const [titleValue, setTitleValue] = useState('');
-    const [descriptionValue, setDescriptionValue] = useState('');
-    const [selectedImage, setSelectedImage] = useState();
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState();
 
-    const titleChangeHandler = (text: any) => {
-        setTitleValue(text);
-    };
-
-    const descriptionChangeHandler = (text: any) => {
-        setDescriptionValue(text);
-    };
-
-    const imageTakenHandler = (imagePath: any) => {
-        setSelectedImage(imagePath);
-    };
-
-    const saveSolutionHandler = () => {
+    const saveSolutionHandler = async () => {
+        await addSolution({
+            title,
+            description,
+            image,
+            postId,
+        });
         navigation.goBack();
     };
 
     return (
         <View style={styles.container}>
-            <Input
-                id="title"
+            <TextInput
                 placeholder="What do you propose?"
-                autoCorrect
                 returnKeyType="next"
-                onInputChange={titleChangeHandler}
-                initialValue={''}
-                initiallyValid={false}
-                required
+                onChangeText={setTitle}
                 style={styles.titleInput}
             />
-            <Input
-                id="description"
+            <TextInput
                 placeholder="Tell us more about your idea..."
-                autoCorrect
-                onInputChange={descriptionChangeHandler}
-                initialValue={''}
-                initiallyValid={false}
-                required
+                onChangeText={setDescription}
                 multiline
                 numberOfLines={11}
                 style={styles.descriptionInput}
             />
-            <ImgPicker onImageTaken={imageTakenHandler} />
+            <ImgPicker onImageTaken={setImage} />
             <View style={styles.buttonContainer}>
                 <PrimaryButton onPress={saveSolutionHandler} text="submit" />
                 <SecondaryButton

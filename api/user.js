@@ -7,15 +7,14 @@ import { getCurrentCordinates } from '../utils/locationHelper';
 
 export const authenticateUser = async (username, password) => {
     try {
-        // const url = `${vars.azureApiUrl}UserLoginFunction?code=${vars.azureKey}`;
-        // var response = await axios.post(url, {
-        //     login: username,
-        //     password: password,
-        // });
+        const url = `${vars.azureApiUrl}UserLoginFunction?code=${vars.azureKey}`;
+        var response = await axios.post(url, {
+            login: username,
+            password: password,
+        });
 
-        // saveData('user', response.data);
+        saveData('user', JSON.stringify(response.data));
         var currentCordinates = await getCurrentCordinates();
-
         await saveData('currentCordinates', JSON.stringify(currentCordinates));
         return true;
     } catch (err) {
