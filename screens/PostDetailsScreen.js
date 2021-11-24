@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
 
-const PostDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
+const PostDetailsScreen = ({ navigation, route }) => {
     const { PostProperties } = route.params;
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -35,10 +35,10 @@ const PostDetailsScreen = ({ navigation, route }: { navigation: any, route: any 
                 </ScrollView>
             </View>
             <View style={styles.buttonsView}>
-                <Pressable style={styles.checkSolutionsButton} onPress={() => NavigatorObject.navigate('SolutionList')}>
+                <Pressable style={styles.checkSolutionsButton} onPress={() => navigation.navigate('SolutionList')}>
                     <Text style={styles.checkSolutionText}>check solutions</Text>
                 </Pressable>
-                <Pressable style={styles.addSolutionButton} onPress={() => NavigatorObject.navigate('AddNewSolution')}>
+                <Pressable style={styles.addSolutionButton} onPress={() => navigation.navigate('AddNewSolution')}>
                     <Text style={styles.addSolutionText}>add solution</Text>
                 </Pressable>
             </View>
