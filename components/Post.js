@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ProgressBarAndroidComponent } from 'react-native';
 import moment from 'moment';
 import { retrieveData } from '../utils/AsyncStorageHelper';
-import haversine from 'haversine-distance';
+import { getDistanceText } from '../utils/locationHelper';
+import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
     tinyLogo: {
@@ -96,16 +97,14 @@ const Post = (props) => {
         longitude: null,
     });
 
+    const navigation = useNavigation();
+
     useEffect(async () => {
         var cordinates = await retrieveData('currentCordinates');
         setCurrentCordinates(JSON.parse(cordinates));
     }, []);
 
-    const renderDistance = () => {
-        var distance = haversine(currentCordinates, { latitude: props.latitude, longitude: props.longitude });
-        return `${distance.toFixed(1)} km away from you`;
-    };
-
+    const distance = getDistanceText(currentCordinates, { latitude: props.latitude, longitude: props.longitude });
     return (
         <View style={styles.mainRowBackground}>
             <View style={styles.rowBackground}>
@@ -113,7 +112,12 @@ const Post = (props) => {
                     <TouchableOpacity
                         style={styles.rowTouchableOpacity}
                         onPress={() => {
-                            props.navigation.navigate('PostDetails', { Properties: props, MainNavigator: props.navigation });
+                            navigation.navigate('PostDetails', {
+                                PostProperties: {
+                                    ...props,
+                                    distance,
+                                },
+                            });
                         }}>
                         <View style={styles.firstColumn}>
                             <Image
@@ -123,7 +127,7 @@ const Post = (props) => {
                                 }}
                             />
                             <View style={styles.distanceRow}>
-                                <Text style={styles.farAwayText}>{renderDistance()}</Text>
+                                <Text style={styles.farAwayText}>{distance}</Text>
                             </View>
                             <View style={styles.timeRow}>
                                 <Text style={styles.timeAgoText}>{moment(props.createdOn).fromNow()}</Text>
