@@ -10,6 +10,7 @@ import SetLocationScreen from '../screens/SetLocationScreen';
 import AddNewSolutionScreen from '../screens/AddNewSolutionScreen';
 import PostDetailsScreen from '../screens/PostDetailsScreen';
 import SolutionsListScreen from '../screens/SolutionsListScreen';
+import SolutionDetailsScreen from '../screens/SolutionDetailsScreen';
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -22,6 +23,7 @@ export default function MainNavigator() {
                         fontFamily: 'comforta-bold',
                     },
                     headerTitle: 'appropose',
+                    headerShadowVisible: false,
                 }}>
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="PostsList" component={PostsListScreen} />
@@ -30,6 +32,7 @@ export default function MainNavigator() {
                 <Stack.Screen name="AddNewSolution" component={AddNewSolutionScreen} />
                 <Stack.Screen name="SetLocation" component={SetLocationScreen} />
                 <Stack.Screen name="PostDetails" component={PostDetailsScreen} />
+                <Stack.Screen name="SolutionDetails" component={SolutionDetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
