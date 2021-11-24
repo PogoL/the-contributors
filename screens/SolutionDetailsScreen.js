@@ -27,18 +27,8 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
 
     return (
         <View style={styles.container}>
-            <View style={styles.fixToText}>
-                <View style={styles.headerContainer}>
-                    <Text style={styles.Header}>LED in the shop wet !</Text>
-                </View>
-                {/* TO DO dorzucenie zmiennej czy kliniete rozwiazanie przez uzytkownika */}
-                {test ? (
-                    <Icon onPress={() => setTest(false)} style={styles.icon} name="heart-outline" size={45} color="#000" />
-                ) : (
-                    <Icon onPress={() => setTest(true)} style={styles.icon} name="heart" size={45} color="#FFD233" />
-                )}
-            </View>
             <View style={styles.descriptionView}>
+                <Text style={styles.Header}>A television or short-screen projector can be placed in the shop wi</Text>
                 <ScrollView>
                     <Text style={styles.descriptionText}>
                         A television or short-screen projector can be placed in the shop window. In this way we can adapt the
@@ -74,6 +64,7 @@ const styles = StyleSheet.create({
     descriptionText: {
         fontSize: 15,
         padding: 25,
+        paddingTop: 0,
         fontSize: 15,
         color: '#000',
         lineHeight: 22.9,
@@ -107,8 +98,9 @@ const styles = StyleSheet.create({
         fontFamily: 'jost',
     },
     fixToText: {
-        flex: 1,
-        flexDirection: 'row',
+        backgroundColor: 'red',
+        height: '20%',
+        margin: 0,
     },
     icon: {
         backgroundColor: '#fff',
@@ -116,10 +108,11 @@ const styles = StyleSheet.create({
         width: '25%',
     },
     Header: {
-        height: '75%',
+        height: '25%',
+        lineHeight: 30,
         fontSize: 23,
-        backgroundColor: '#fff',
-        width: '100%',
+        marginLeft: '6.5%',
+        width: '80%',
         fontWeight: 'bold',
         textAlign: 'left',
         color: '#000',
