@@ -71,12 +71,14 @@ const AddNewPostScreen = ({ navigation, route }) => {
             />
             <ImgPicker onImageTaken={setImage} />
             <View style={styles.buttonContainer}>
-                <PrimaryButton onPress={submitHandler} text="submit" />
+                <PrimaryButton onPress={submitHandler} text="submit" style={styles.button} textStyle={styles.buttonText} />
                 <SecondaryButton
                     onPress={() => {
                         navigation.goBack();
                     }}
                     text="cancel"
+                    style={styles.button}
+                    textStyle={styles.buttonText}
                 />
             </View>
             <SuccessModal
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
         color: 'black',
         fontSize: 20,
-        fontWeight: 'bold',
+        fontFamily: 'jost-bold',
     },
     questionInput: {
         borderColor: Colors.mainBlue,
@@ -115,6 +117,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         paddingVertical: 5,
         paddingHorizontal: 8,
+        fontFamily: 'jost',
     },
     descriptionInput: {
         borderColor: Colors.mainBlue,
@@ -125,12 +128,19 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 8,
         textAlignVertical: 'top',
+        fontFamily: 'jost',
         marginBottom: 10,
     },
     buttonContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
+    },
+    button: {
+        width: 152,
+    },
+    buttonText: {
+        textAlign: 'center',
     },
 });
 

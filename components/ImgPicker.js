@@ -58,9 +58,19 @@ const ImgPicker = (props: any) => {
                 )}
             </View>
             <View style={styles.buttonContainer}>
-                <SecondaryButton text="Take Image" onPress={takeImageHandler} />
+                <SecondaryButton
+                    text="Take Image"
+                    onPress={takeImageHandler}
+                    style={styles.button}
+                    textStyle={styles.buttonText}
+                />
                 <Text style={styles.noImageText}>or</Text>
-                <SecondaryButton text="Choose from library" onPress={chooseImageHandler} />
+                <SecondaryButton
+                    text="Open gallery"
+                    onPress={chooseImageHandler}
+                    style={styles.button}
+                    textStyle={styles.buttonText}
+                />
             </View>
         </View>
     );
@@ -92,6 +102,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 5,
         padding: 5,
+    },
+    button: {
+        width: 152,
+        paddingHorizontal: 10,
+    },
+    buttonText: {
+        textAlign: 'center',
     },
 });
 

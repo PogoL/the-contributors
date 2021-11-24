@@ -33,7 +33,7 @@ const PostDetailsScreen = ({ navigation, route }) => {
                     <Text style={styles.questionText}>{props.question}</Text>
                 </View>
                 <View style={styles.Test}>
-                    <Text style={styles.questionText2}>67contributors also see this as a problem</Text>
+                    <Text style={styles.questionText2}>67 contributors also see this as a problem</Text>
                     <SecondaryButton
                         text="+1"
                         style={styles.addRating}
@@ -90,9 +90,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         marginRight: 20,
+        marginTop: 10,
     },
     descriptionView: {
         height: '40%',
+        marginBottom: 5,
     },
     photoView: {
         height: '50%',
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
         height: 100,
     },
     distanceText: {
-        color: '#000000',
+        color: '#rgba(0,0,0,0.8)',
         alignContent: 'center',
         fontSize: 13,
         fontFamily: 'jost',
@@ -120,57 +122,40 @@ const styles = StyleSheet.create({
     },
     buttonsView: {
         height: '100%',
+        width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginTop: '2.5%',
+        marginTop: '4%',
     },
-    checkSolutionsButton: {
-        backgroundColor: '#000000',
-        width: '40%',
-        height: '7.5%',
-        alignItems: 'center',
-        alignContent: 'center',
-    },
-    // addSolutionButton: {
-    //     width: '40%',
-    //     height: '7.5%',
-    //     alignItems: 'center',
-    //     alignContent: 'center',
-    //     borderColor: '#000000',
-    //     borderWidth: 1,
-    // },
     addRating: {
         padding: 0,
         paddingHorizontal: 10,
         paddingVertical: 10,
-        color: '#fff',
+        color: '#rgba(255,255,255,0.8)',
         width: 50,
         alignItems: 'center',
         alignContent: 'center',
         height: 50,
-        borderColor: '#fff',
+        borderColor: '#rgba(255,255,255,0.8)',
         borderWidth: 2,
     },
     textStyle: {
         color: '#fff',
     },
-    checkSolutionText: { fontSize: 15, marginTop: '7.5%', color: 'white' },
-    addSolutionText: { fontSize: 15, marginTop: '7.5%', color: '#000000' },
+    checkSolutionText: { fontSize: 15, marginTop: '7.5%', color: '#rgba(255,255,255,0.8)' },
+    addSolutionText: { fontSize: 15, marginTop: '7.5%', color: '#rgba(0,0,0,0.8)' },
     distanceView: {
         width: '40%',
         justifyContent: 'center',
-        borderTopRightRadius: 25,
-        borderBottomRightRadius: 25,
         backgroundColor: '#FFD233',
         alignItems: 'center',
         marginTop: '30%',
     },
     titleText: {
         fontSize: 28,
-        fontWeight: 'bold',
         fontFamily: 'jost-bold',
         textAlign: 'left',
-        color: '#ffffff',
+        color: '#rgba(255,255,255,0.8)',
         marginLeft: 10,
         marginTop: '5%',
     },
@@ -178,18 +163,16 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'jost',
         textAlign: 'left',
-        color: '#ffffff',
+        color: '#rgba(255,255,255,0.8)',
         marginHorizontal: 15,
         marginTop: '5%',
     },
     questionText2: {
         fontSize: 14,
-        width: 200,
+        width: 140,
         fontFamily: 'jost',
         textAlign: 'left',
-        color: '#ffffff',
-        marginHorizontal: 2,
-        marginTop: '5%',
+        color: '#rgba(255,255,255,0.8)',
     },
     descriptionText: {
         padding: 25,

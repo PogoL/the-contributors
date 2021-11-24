@@ -79,12 +79,6 @@ const styles = StyleSheet.create({
     formControl: {
         width: '100%',
     },
-    errorContainer: {},
-    errorText: {
-        fontFamily: 'jost',
-        color: 'red',
-        fontSize: 13,
-    },
 });
 
 export default Input;

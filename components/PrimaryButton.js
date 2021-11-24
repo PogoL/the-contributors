@@ -5,8 +5,8 @@ import Colors from '../constants/Colors';
 const PrimaryButton = (props: any) => {
     return (
         <TouchableOpacity onPress={props.onPress}>
-            <View style={[styles.styledButton, props.styles]}>
-                <Text style={styles.text}>{props.text}</Text>
+            <View style={[styles.styledButton, props.style]}>
+                <Text style={[styles.text, props.textStyle]}>{props.text}</Text>
             </View>
         </TouchableOpacity>
     );

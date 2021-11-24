@@ -15,13 +15,14 @@ const SecondaryButton = (props: any) => {
 const styles = StyleSheet.create({
     styledButton: {
         borderWidth: 1,
+        borderColor: 'rgba(0,0,0,0.8)',
         padding: 10,
         paddingHorizontal: 26,
     },
     text: {
         color: 'black',
         fontFamily: 'jost',
-        fontSize: 15,
+        fontSize: 17,
     },
 });
 
