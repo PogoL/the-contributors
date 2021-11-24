@@ -32,8 +32,14 @@ const PostDetailsScreen = ({ navigation, route }) => {
                 <View>
                     <Text style={styles.questionText}>{props.question}</Text>
                 </View>
-                <View>
-                    <Text></Text>
+                <View style={styles.Test}>
+                    <Text style={styles.questionText2}>67contributors also see this as a problem</Text>
+                    <SecondaryButton
+                        text="+1"
+                        style={styles.addRating}
+                        textStyle={styles.textStyle}
+                        onPress={() => console.log('+1')}
+                    />
                 </View>
             </View>
             <View style={styles.descriptionView}>
@@ -78,6 +84,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
     },
+    Test: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginRight: 20,
+    },
     descriptionView: {
         height: '40%',
     },
@@ -118,13 +129,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
     },
-    addSolutionButton: {
-        width: '40%',
-        height: '7.5%',
+    // addSolutionButton: {
+    //     width: '40%',
+    //     height: '7.5%',
+    //     alignItems: 'center',
+    //     alignContent: 'center',
+    //     borderColor: '#000000',
+    //     borderWidth: 1,
+    // },
+    addRating: {
+        padding: 0,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+        color: '#fff',
+        width: 50,
         alignItems: 'center',
         alignContent: 'center',
-        borderColor: '#000000',
-        borderWidth: 1,
+        height: 50,
+        borderColor: '#fff',
+        borderWidth: 2,
+    },
+    textStyle: {
+        color: '#fff',
     },
     checkSolutionText: { fontSize: 15, marginTop: '7.5%', color: 'white' },
     addSolutionText: { fontSize: 15, marginTop: '7.5%', color: '#000000' },
@@ -152,6 +178,15 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         color: '#ffffff',
         marginHorizontal: 15,
+        marginTop: '5%',
+    },
+    questionText2: {
+        fontSize: 14,
+        width: 200,
+        fontFamily: 'jost',
+        textAlign: 'left',
+        color: '#ffffff',
+        marginHorizontal: 2,
         marginTop: '5%',
     },
     descriptionText: {
