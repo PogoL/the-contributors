@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     descriptionView: {
         height: '40%',
     },
-    descriptionText: { fontSize: 15, padding: 25, lineHeight: 20 },
     photoView: {
         height: '50%',
     },
@@ -86,6 +85,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         fontSize: 13,
         fontFamily: 'jost',
+        padding: 4,
     },
     buttonsView: {
         height: '100%',
@@ -115,10 +115,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderTopRightRadius: 25,
         borderBottomRightRadius: 25,
-        paddingLeft: 0,
         backgroundColor: '#FFD233',
-        paddingTop: 8,
-        paddingBottom: 8,
         alignItems: 'center',
         marginTop: '30%',
     },
@@ -132,10 +129,12 @@ const styles = StyleSheet.create({
     },
     descriptionText: {
         fontSize: 15,
+        padding: 25,
+        fontSize: 15,
         marginLeft: 10,
         marginTop: '0%',
         marginBottom: '10%',
-        color: '#ffffff',
+        color: '#000',
         lineHeight: 22.9,
     },
 });
