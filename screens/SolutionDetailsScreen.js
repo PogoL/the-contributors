@@ -43,7 +43,10 @@ const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: 
             <View style={styles.descriptionView}>
                 <Text style={styles.Header}>{title}</Text>
                 <ScrollView>
-                    <Text style={styles.descriptionText}>{description}</Text>
+                    <Text style={styles.descriptionText}>
+                        {description}
+                        adasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasdaadasdasdasda
+                    </Text>
                 </ScrollView>
             </View>
             <View style={styles.photoView}>
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
         padding: 25,
         paddingTop: 0,
         fontSize: 15,
-        color: '#000',
+        color: 'rgba(0, 0, 0, 0.8)',
         lineHeight: 22.9,
         backgroundColor: '#fff',
     },
@@ -99,7 +102,7 @@ const styles = StyleSheet.create({
         height: 100,
     },
     testTxt1: {
-        color: '#000000',
+        color: 'rgba(0, 0, 0, 0.5)',
         alignContent: 'center',
         fontSize: 13,
         fontFamily: 'jost',
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
         width: '80%',
         fontWeight: 'bold',
         textAlign: 'left',
-        color: '#000',
+        color: 'rgba(0, 0, 0, 0.8)',
         maxHeight: '30%',
         minHeight: '7.5%',
     },
