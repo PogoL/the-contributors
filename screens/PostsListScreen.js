@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Alert } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Alert, RefreshControl, ActivityIndicator } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { CustomHeaderButton } from '../components/CustomHeaderButton';
 import Post from '../components/Post';
@@ -20,10 +20,20 @@ const styles = StyleSheet.create({
 
 const PostsListScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     const [posts, setPosts] = useState([]);
+    const [refreshing, setRefreshing] = useState(true);
     useEffect(async () => {
+        setRefreshing(false);
         var posts = await fetchAllPosts();
         setPosts(posts);
     }, []);
+
+    const onRefresh = async () => {
+        //Clear old data of the list
+        setPosts([]);
+        //Call the Service to get the latest data
+        var posts = await fetchAllPosts();
+        setPosts(posts);
+    };
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
@@ -41,7 +51,18 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
 
     return (
         <View style={styles.container}>
-            <FlatList data={posts} renderItem={({ item }) => <Post navigation={navigation} {...item}></Post>} />
+            {refreshing ? <ActivityIndicator /> : null}
+            <FlatList
+                data={posts}
+                renderItem={({ item }) => <Post navigation={navigation} {...item}></Post>}
+                refreshControl={
+                    <RefreshControl
+                        //refresh control used for the Pull to Refresh
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }
+            />
         </View>
     );
 };
