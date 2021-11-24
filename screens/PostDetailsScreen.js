@@ -33,7 +33,7 @@ const PostDetailsScreen = ({ navigation, route }) => {
                     <Text style={styles.questionText}>{props.question}</Text>
                 </View>
                 <View style={styles.Test}>
-                    <Text style={styles.questionText2}>67 contributors also see this as a problem</Text>
+                    <Text style={styles.questionText2}>{props.angryCount} contributors also see this as a problem</Text>
                     <SecondaryButton
                         text="+1"
                         style={styles.addRating}
