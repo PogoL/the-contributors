@@ -4,5 +4,5 @@ export default {
     secondaryBlue: '#4f64ff',
     grey: '#ccc',
     darkGrey: '#222',
-
-}
+    yellow: '#FFD233',
+};
