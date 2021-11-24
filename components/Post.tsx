@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         paddingLeft: 0,
         backgroundColor:"#ffffff",
         marginTop:'45%',
-        paddingTop:4,
-        paddingBottom:4,
+        paddingTop:6,
+        paddingBottom:6,
         alignItems: 'center',
     },
     rowView3: {
@@ -46,14 +46,14 @@ const styles = StyleSheet.create({
         paddingLeft: 0,
         backgroundColor:"#ffffff",
         marginTop:'5%',
-        paddingTop:4,
-        paddingBottom:4,
+        paddingTop:6,
+        paddingBottom:6,
         alignItems: 'center',
     },
     
     
     Header: {
-        fontSize:14,
+        fontSize:17,
         fontWeight:'bold',
         textAlign:'left',
         color:'#ffffff',
@@ -63,25 +63,25 @@ const styles = StyleSheet.create({
 
     },
     Description:{
-        fontSize:11,
+        fontSize:13,
         marginLeft:10,
         marginTop:'10%',
         marginBottom:'10%',
         color:'#ffffff',
         lineHeight: 15.9,
-
+        paddingRight:10.
     },
     testTxt1: {
         color:"#001EA0",
         alignContent:'center',
-        fontSize:9,
+        fontSize:11,
         fontFamily: 'jost',
 
     },
     testTxt2: {
         color:"#2F4152",
         alignContent:'center',
-        fontSize:9,
+        fontSize:11,
         fontFamily: 'jost',
 
     },
@@ -94,7 +94,9 @@ const PostScreen = (props) => {
         <View style={styles.MainRowBackground}>
             <View style={styles.rowBackground}>
                 <View>
-                    <TouchableOpacity style={styles.rowTouchableOpacity} onPress={() => console.log("test" + props.name)} >
+                    <TouchableOpacity style={styles.rowTouchableOpacity} onPress={() => {
+                        props.navigation.navigate('PostDetails', {Properties:props, MainNavigator:props.navigation})
+                    }}>
                         <View style={styles.test5}  >
                             <Image
                                 style={styles.tinyLogo}

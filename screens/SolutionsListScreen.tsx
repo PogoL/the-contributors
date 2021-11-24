@@ -13,9 +13,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const data = 
 
-const FlatListBasics = () => {
+const SolutionsListScreen = () => {
   return (
     <View style={styles.container}>
       <FlatList
@@ -37,4 +36,4 @@ const FlatListBasics = () => {
   );
 }
 
-export default FlatListBasics;
+export default SolutionsListScreen;

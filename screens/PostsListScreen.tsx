@@ -40,7 +40,7 @@ const PostsListScreen = ({ navigation, route }: { navigation: any, route: any })
         <View style={styles.container} >
       <FlatList
         data={mockDataPosts}
-        renderItem={({item}) => <PostScreen photo={item.Photo} name={item.Title} header={item.Header} description={item.Description} time={item.Time} howFar={item.HowFar}></PostScreen>}
+        renderItem={({item}) => <PostScreen navigation={navigation} photo={item.Photo} name={item.Title} header={item.Header} description={item.Description} time={item.Time} howFar={item.HowFar}></PostScreen>}
       />
     </View>
     );
