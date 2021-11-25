@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
         fontSize: 13,
         marginLeft: 12.5,
         marginTop: '10%',
-        marginBottom: '10%',
         color: '#ffffff',
         lineHeight: 15.9,
         paddingRight: 10,
@@ -109,7 +108,7 @@ const Solution = (props) => {
                         </View>
                         <View style={styles.rowView}>
                             <Text style={styles.Header}>{props.title}</Text>
-                            <Text style={styles.Description}>{props.description}</Text>
+                            <Text numberOfLines={4} style={styles.Description}>{props.description}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

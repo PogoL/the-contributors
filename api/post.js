@@ -1,6 +1,7 @@
 import axios from 'axios';
 import vars from '../envVars';
 import { retrieveData } from '../utils/AsyncStorageHelper';
+import { handleError } from './helpers';
 
 export const fetchAllPosts = async () => {
     try {
@@ -39,6 +40,7 @@ export const addPost = async ({
         const url = `${vars.azureApiUrl}AddPostFunction?code=${vars.azureKey}`;
         await axios.post(url, formData);
     } catch (err) {
+        handleError('Adding failed', 'Try again', err, 'Adding post failed. Try again.');
         console.error(err);
     }
 };
