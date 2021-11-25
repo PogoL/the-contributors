@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from '../constants/Colors';
 
-const SecondaryButton = (props: any) => {
+const SecondaryButton = (props) => {
     return (
         <TouchableOpacity onPress={props.onPress}>
-            <View style={[styles.styledButton, props.style]}>
+            <View style={[styles.styledButton, props.style, props.isAssociated && styles.associated]}>
                 <Text style={[styles.text, props.textStyle]}>{props.text}</Text>
             </View>
         </TouchableOpacity>
@@ -13,6 +13,9 @@ const SecondaryButton = (props: any) => {
 };
 
 const styles = StyleSheet.create({
+    associated: {
+        backgroundColor: Colors.yellow
+    },
     styledButton: {
         borderWidth: 1,
         borderColor: 'rgba(0,0,0,0.8)',

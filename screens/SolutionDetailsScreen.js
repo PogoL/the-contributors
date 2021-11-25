@@ -66,9 +66,6 @@ const styles = StyleSheet.create({
     photoView: {
         flex: 3,
     },
-    headerContainer: {
-        marginLeft: 25,
-    },
     background: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.5)',
@@ -78,26 +75,6 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
         zIndex: 0,
-    },
-    logo: {
-        width: 100,
-        height: 100,
-    },
-    testTxt1: {
-        color: 'rgba(0, 0, 0, 0.5)',
-        alignContent: 'center',
-        fontSize: 13,
-        fontFamily: 'jost',
-    },
-    fixToText: {
-        backgroundColor: 'red',
-        height: '20%',
-        margin: 0,
-    },
-    icon: {
-        backgroundColor: '#fff',
-        height: '75%',
-        width: '25%',
     },
     Header: {
         lineHeight: 30,

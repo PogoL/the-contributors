@@ -139,8 +139,6 @@ const styles = StyleSheet.create({
     textStyle: {
         color: '#fff',
     },
-    checkSolutionText: { fontSize: 15, marginTop: '7.5%', color: '#rgba(255,255,255,0.8)' },
-    addSolutionText: { fontSize: 15, marginTop: '7.5%', color: '#rgba(0,0,0,0.8)' },
     distanceView: {
         width: '40%',
         justifyContent: 'center',
