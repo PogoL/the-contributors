@@ -3,36 +3,26 @@ import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground }
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { CustomHeaderButton } from '../components/CustomHeaderButton';
 
-const SolutionDetailsScreen = ({ navigation, route }: { navigation: any, route: any }) => {
-    const { MainNavigator, title, description, imageUrl } = route.params;
+const SolutionDetailsScreen = ({ navigation, route }) => {
+    const { title, description, imageUrl } = route.params;
+    const [isLiked, setIsLiked] = useState(false);
 
-    const [test, setTest] = useState(false);
-
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
         navigation.setOptions({
             headerShown: true,
             headerTitle: '',
             headerRight: () => (
                 <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-                    {test ? (
-                        <Item
-                            title="search"
-                            iconSize={1}
-                            iconName="heart"
-                            onPress={() => console.log('Unlike')} // todo lajki
-                        />
-                    ) : (
-                        <Item
-                            title="search"
-                            iconSize={1}
-                            iconName="heart-outline"
-                            onPress={() => console.log('Like')} // todo
-                        />
-                    )}
+                    <Item
+                        title="search"
+                        iconSize={1}
+                        iconName={isLiked ? "heart": "heart-outline"}
+                        onPress={() => setIsLiked(!isLiked)} // todo
+                    />
                 </HeaderButtons>
             ),
         });
-    }, [navigation]);
+    }, [navigation, isLiked]);
 
     return (
         <View style={styles.container}>
@@ -63,7 +53,6 @@ const styles = StyleSheet.create({
     },
     descriptionView: {
         flex: 3,
-        // margin: 0,
     },
     descriptionText: {
         fontSize: 15,

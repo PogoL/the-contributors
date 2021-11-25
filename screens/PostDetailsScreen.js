@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text, StyleSheet, Pressable, ScrollView, ImageBackground } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const PostDetailsScreen = ({ navigation, route }) => {
     const { props } = route.params;
+    const [isAssociated, setIsAssociated] = useState(false);
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
@@ -36,9 +37,10 @@ const PostDetailsScreen = ({ navigation, route }) => {
                     <Text style={styles.questionText2}>{props.angryCount} contributors also see this as a problem</Text>
                     <SecondaryButton
                         text="+1"
+                        isAssociated={isAssociated}
                         style={styles.addRating}
                         textStyle={styles.textStyle}
-                        onPress={() => console.log('+1 byczku')}
+                        onPress={() => setIsAssociated(!isAssociated)}
                     />
                 </View>
             </View>
